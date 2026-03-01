@@ -3,6 +3,7 @@ import BlogCard from '../components/BlogCard'
 import SearchBar from '../components/SearchBar'
 import TagFilter from '../components/TagFilter'
 import AdSection from '../components/AdSection'
+import MyConfig from '../components/MyConfig'
 import type { BlogPost } from '../types'
 import { getAllBlogPosts, getAllTags, searchBlogPosts, filterBlogPostsByTags } from '../lib/blog'
 
@@ -122,6 +123,9 @@ export default function Home() {
 
       {/* Ad Section - 合作伙伴 */}
       <AdSection />
+
+      {/* My Config - 我的配置 */}
+      <MyConfig />
 
       <section id="latest-posts" className="mb-20 scroll-mt-24">
 
