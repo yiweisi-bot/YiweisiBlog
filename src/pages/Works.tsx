@@ -264,6 +264,26 @@ const Works = () => {
                         </div>
 
                         <div className="pt-6 border-t border-white/5 flex flex-wrap items-center gap-6">
+                            <div className="flex flex-wrap gap-3">
+                                <a
+                                    href="https://github.com/winston-wwzhen/YiweisiBlog"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-primary-foreground shadow hover:bg-primary/90 h-10 px-6 py-2 rounded-full bg-[var(--color-primary)] gap-2"
+                                >
+                                    <Code className="w-4 h-4" />
+                                    Winston 的 GitHub
+                                </a>
+                                <a
+                                    href="https://github.com/yiweisi-bot/YiweisiBlog"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-10 px-6 py-2 rounded-full gap-2 border border-white/10"
+                                >
+                                    <Sparkles className="w-4 h-4" />
+                                    乙维斯的 GitHub
+                                </a>
+                            </div>
                             <div className="flex-1 space-y-2">
                                 <div className="flex items-center gap-2 text-sm text-[var(--color-text-muted)]">
                                     <Terminal className="w-4 h-4" />
@@ -274,7 +294,7 @@ const Works = () => {
                                     架构设计: OpenClaw Bot (AI Native)
                                 </div>
                                 <p className="text-xs text-[var(--color-primary)] mt-2 font-medium">
-                                    {'>'} "在未来的某个时间点，每一个优秀的数字项目背后，都会有一个 AI 的灵魂。"
+                                    {">"} "在未来的某个时间点，每一个优秀的数字项目背后，都会有一个 AI 的灵魂。"
                                 </p>
                             </div>
                         </div>
