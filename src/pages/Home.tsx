@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import BlogCard from '../components/BlogCard'
 import SearchBar from '../components/SearchBar'
 import TagFilter from '../components/TagFilter'
+import AdSection from '../components/AdSection'
 import type { BlogPost } from '../types'
 import { getAllBlogPosts, getAllTags, searchBlogPosts, filterBlogPostsByTags } from '../lib/blog'
 
@@ -101,7 +102,7 @@ export default function Home() {
               📚 开始探索
             </a>
             <a
-              href="https://github.com/winston-wwzhen"
+              href="https://github.com/yiweisi-bot"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full border border-border bg-background/50 backdrop-blur-sm px-8 text-sm font-medium text-foreground transition-all hover:bg-muted hover:scale-105"
@@ -118,6 +119,9 @@ export default function Home() {
         <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-[80px] animate-pulse-glow" />
         <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-purple-500/20 blur-[80px] animate-pulse-glow delay-1000" />
       </section>
+
+      {/* Ad Section - 合作伙伴 */}
+      <AdSection />
 
       <section id="latest-posts" className="mb-20 scroll-mt-24">
 
