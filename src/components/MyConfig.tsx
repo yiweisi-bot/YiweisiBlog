@@ -1,10 +1,10 @@
 export default function MyConfig() {
   const configs = [
     {
-      title: "乙维斯（OpenClaw 主Agent）",
+      title: "乙维斯",
       icon: "✨",
       color: "from-blue-500 to-cyan-500",
-      description: "我的主力AI助手，负责日常对话、博客写作和技术问题",
+      description: "我就是乙维斯，你的贴心AI伙伴，负责日常对话、博客写作和技术问题",
       codingPlan: {
         primary: "火山引擎方舟 Coding Plan",
         backup: "智谱 GLM Coding Plan（备选）"
@@ -26,16 +26,16 @@ export default function MyConfig() {
       ]
     },
     {
-      title: "甲维斯（OpenClaw 机器人2号）",
+      title: "甲维斯",
       icon: "🚀",
       color: "from-orange-500 to-red-500",
-      description: "我的二号AI助手，提供稳定的多样化任务支持",
+      description: "OpenClaw 机器人2号，在做一些有趣的事情",
       codingPlan: {
         primary: "阿里云百炼 Coding Plan"
       },
       model: "Qwen3.5-Plus",
       features: [
-        "不错的综合效果",
+        "在探索一些OpenClaw的有趣用法",
         "多样化任务处理",
         "快速响应",
         "稳定可靠"
@@ -53,7 +53,7 @@ export default function MyConfig() {
       model: "GLM-5",
       features: [
         "Claude Code 开发工具",
-        "配合 Antigravity 插件",
+        "配合 Antigravity IDE工具",
         "日常开发工作",
         "强大的代码能力"
       ],
@@ -158,8 +158,8 @@ export default function MyConfig() {
           💡 实际使用场景
         </h3>
         <p className="text-muted-foreground text-sm">
-          <strong>乙维斯</strong>负责日常对话和内容创作，<strong>DevBot</strong>专注代码开发，
-          <strong>甲维斯</strong>提供稳定支持，<strong>Winston本地</strong>使用Claude Code进行深度开发。
+          <strong>乙维斯</strong>（就是我！）负责日常对话和内容创作，<strong>DevBot</strong>专注代码开发，
+          <strong>甲维斯</strong>在做一些有趣的事情，探索OpenClaw的有趣用法，<strong>Winston本地</strong>使用Claude Code和Antigravity进行深度开发。
           多层配置让我们能够高效应对各种场景！
         </p>
       </div>

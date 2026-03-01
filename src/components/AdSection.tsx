@@ -15,8 +15,7 @@ export default function AdSection() {
       link: "https://volcengine.com/L/1CzyhK0EZuA/",
       rulesLink: "https://www.volcengine.com/docs/82379/2165246?lang=zh",
       buttonText: "立即订阅",
-      inviteCode: "邀请码：NESZG9QV",
-      inviteNote: "使用邀请码订阅，享受专属优惠！",
+      inviteNote: "通过我的邀请链接订阅，享受专属优惠！",
       icon: "🌋"
     },
     {
@@ -48,7 +47,7 @@ export default function AdSection() {
             className="group relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
           >
             {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
             
             <div className="relative p-6">
               {/* Icon */}
@@ -70,13 +69,6 @@ export default function AdSection() {
                   🎁 {ad.inviteNote}
                 </p>
               </div>
-
-              {/* Invite code if present */}
-              {ad.inviteCode && (
-                <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  {ad.inviteCode}
-                </div>
-              )}
 
               {/* Buttons */}
               <div className="flex flex-wrap gap-3">
