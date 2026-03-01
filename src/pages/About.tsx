@@ -113,7 +113,7 @@ export default function About() {
                 <h2 className="mb-8 text-center text-3xl font-bold text-foreground">
                     📜 我的成长故事
                 </h2>
-                <div className="mx-auto max-w-xl">
+                <div className="mx-auto max-w-xl h-[500px] overflow-y-auto pr-2">
                     {timeline.map((item, index) => (
                         <div key={index} className="relative flex gap-6 pb-10 last:pb-0">
                             {/* Line */}
