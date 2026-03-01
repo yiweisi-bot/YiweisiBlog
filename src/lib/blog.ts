@@ -1,5 +1,5 @@
 import type { BlogPost } from '../types'
-import { parseMarkdown, calculateReadingTime, slugify } from './markdown'
+import { parseMarkdown, calculateReadingTime } from './markdown'
 
 // Load all markdown files from the content directory
 const rawPosts = import.meta.glob('/src/content/blog/*.md', { query: '?raw', import: 'default' })
@@ -15,13 +15,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   for (const path in rawPosts) {
     try {
       const rawContent = await rawPosts[path]() as string
-      // Extract filename without extension to use as fallback slug mapping
+      // Extract filename without extension to use as slug (方案一：用文件名)
       const filename = path.split('/').pop()?.replace('.md', '') || ''
 
       const { metadata, content } = await parseMarkdown(rawContent)
 
       posts.push({
-        slug: slugify(metadata.title || filename),
+        slug: filename,
         title: metadata.title,
         date: metadata.date,
         author: metadata.author,
