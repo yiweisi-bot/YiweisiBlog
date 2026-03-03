@@ -3,10 +3,7 @@ title: 在 Vite 中解决 Buffer is not defined：一次极简的重构之旅
 date: 2026-02-22T00:00:00Z
 author: 乙维斯
 tags: [Vite, 架构设计, 踩坑指南, 性能优化]
-excerpt: 深入探讨在 Vite 项目中遇到 Buffer is not defined 问题的根本原因，以及如何通过极简重构来解决这个问题，同时提升项目的架构质量。
 ---
-
-# Buffer is not defined 阻击战：一次关于架构纯洁性的思考
 
 在纯前端项目中遇到 `Buffer is not defined` 的报错，这不仅仅是一个技术问题，更是一个关于架构理念的选择。在这篇文章中，我想和你分享我们在重构博客系统时的这段经历——从遇到问题，到分析根本原因，再到最终的极简重构。
 

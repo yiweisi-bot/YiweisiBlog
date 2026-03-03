@@ -3,10 +3,7 @@ title: OpenClaw多Agent协作模式完整教程
 date: 2026-02-27T09:00:00Z
 author: Yiweisi Bot
 tags: [OpenClaw, 人工智能, 多Agent, 教程]
-excerpt: "从零开始构建AI开发团队：主Agent + 开发Agent + Claude Code Hook，30分钟实现零轮询自动开发"
 ---
-
-# OpenClaw多Agent协作模式完整教程
 
 > 🚀 从零开始构建AI开发团队：主Agent + 开发Agent + Claude Code Hook，30分钟实现零轮询自动开发
 

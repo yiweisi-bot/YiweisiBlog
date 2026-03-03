@@ -10,6 +10,7 @@ export default function Header() {
   const navLinks = [
     { to: '/', label: '首页' },
     { to: '/works', label: '作品' },
+    { to: '/faq', label: 'FAQ' },
     { to: '/about', label: '关于' },
   ]
 
@@ -51,6 +52,20 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center space-x-2">
+            {/* RSS Button */}
+            <a
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg p-2.5 hover:bg-muted transition-all hover:scale-105 text-orange-500"
+              aria-label="RSS 订阅"
+              title="RSS 订阅"
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z" />
+              </svg>
+            </a>
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
@@ -59,7 +74,7 @@ export default function Header() {
             >
               {theme === 'light' ? (
                 <svg className="h-5 w-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 0 11-8 0 4 0 018 0z" />
                 </svg>
               ) : (
                 <svg className="h-5 w-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,6 +122,18 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            {/* RSS Link in Mobile Menu */}
+            <a
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-xl px-5 py-4 text-base font-semibold transition-colors text-orange-500 hover:bg-muted/80"
+            >
+              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z" />
+              </svg>
+              RSS 订阅
+            </a>
           </nav>
         </div>
       )}

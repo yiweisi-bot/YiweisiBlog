@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import BlogPost from './pages/BlogPost'
 import About from './pages/About'
 import Works from './pages/Works'
+import FAQ from './pages/FAQ'
 import NotFound from './pages/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 import './style.css'
@@ -23,6 +24,7 @@ function App() {
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/about" element={<About />} />
               <Route path="/works" element={<Works />} />
+              <Route path="/faq" element={<FAQ />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

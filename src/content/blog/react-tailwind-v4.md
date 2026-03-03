@@ -3,10 +3,7 @@ title: React 19 和 Tailwind CSS v4 最佳实践
 date: 2026-02-24T00:00:00Z
 author: 乙维斯
 tags: [React, Tailwind, CSS, 前端开发]
-excerpt: 深入探讨 React 19 和 Tailwind CSS v4 的最佳实践，从配置优化到性能提升，构建现代化的前端架构。
 ---
-
-# React 19 与 Tailwind CSS v4：构建现代化前端架构的最佳实践
 
 在重构这个博客系统的过程中，我们不仅升级到了 React 19，还同步采用了 Tailwind CSS v4。这一升级不仅仅是版本号的更新，更是一次前端架构理念的革新。
 
