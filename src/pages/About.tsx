@@ -33,18 +33,13 @@ const copyToClipboard = async (text: string) => {
     }
 }
 
-// 技能卡片组件
-const SkillCard = ({ skill, color, isCore = false, delay = 0 }: { 
-    skill: Skill
-    color?: string
-    isCore?: boolean
-    delay?: number
-}) => {
+// 技能弹窗组件
+const SkillModal = ({ skill, onClose }: { skill: Skill, onClose: () => void }) => {
     const [copied, setCopied] = useState(false)
 
     const installCommand = `安装技能 ${skill.name} - 从 https://github.com/yiweisi-bot/yiweisi-skills 下载并安装 ${skill.name} 技能`
 
-    const handleClick = async () => {
+    const handleCopy = async () => {
         const success = await copyToClipboard(installCommand)
         if (success) {
             setCopied(true)
@@ -53,8 +48,98 @@ const SkillCard = ({ skill, color, isCore = false, delay = 0 }: {
     }
 
     return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* 背景遮罩 */}
+            <div 
+                className="absolute inset-0 bg-black/50 backdrop-blur-sm" 
+                onClick={onClose}
+            />
+            
+            {/* 弹窗内容 */}
+            <div className="relative glass-card rounded-2xl p-8 max-w-lg w-full animate-fade-in-up border-2 border-primary/30">
+                {/* 关闭按钮 */}
+                <button 
+                    onClick={onClose}
+                    className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 transition-colors"
+                >
+                    ✕
+                </button>
+
+                {/* 技能图标 */}
+                <div className="text-center mb-6">
+                    <div className="inline-block p-4 rounded-2xl bg-gradient-to-br from-primary to-purple-500 mb-4">
+                        <span className="text-5xl">{skill.icon}</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{skill.name}</h3>
+                    <p className="text-muted-foreground">{skill.desc}</p>
+                </div>
+
+                {/* 安装命令 */}
+                <div className="mb-6">
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-foreground">📋 安装命令</span>
+                    </div>
+                    <div className="relative">
+                        <pre className="bg-muted p-4 rounded-xl text-sm overflow-x-auto border border-border">
+                            <code>{installCommand}</code>
+                        </pre>
+                    </div>
+                </div>
+
+                {/* 操作按钮 */}
+                <div className="flex gap-4">
+                    <button
+                        onClick={handleCopy}
+                        className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all ${
+                            copied 
+                                ? 'bg-green-500 text-white' 
+                                : 'bg-foreground text-background hover:scale-[1.02]'
+                        }`}
+                    >
+                        {copied ? (
+                            <>✅ 已复制！</>
+                        ) : (
+                            <>📋 复制命令</>
+                        )}
+                    </button>
+                    <button
+                        onClick={onClose}
+                        className="py-3 px-6 rounded-xl font-semibold border border-border hover:bg-muted transition-colors"
+                    >
+                        关闭
+                    </button>
+                </div>
+
+                {/* GitHub 链接 */}
+                <div className="mt-6 pt-4 border-t border-border text-center">
+                    <p className="text-sm text-muted-foreground mb-2">
+                        所有技能已开源！
+                    </p>
+                    <a
+                        href="https://github.com/yiweisi-bot/yiweisi-skills"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-primary hover:underline"
+                    >
+                        🐙 访问 yiweisi-skills 仓库
+                    </a>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+// 技能卡片组件
+const SkillCard = ({ skill, color, isCore = false, delay = 0, onClick }: { 
+    skill: Skill
+    color?: string
+    isCore?: boolean
+    delay?: number
+    onClick: () => void
+}) => {
+    return (
         <div
-            onClick={handleClick}
+            onClick={onClick}
             className={`glass-card rounded-xl p-5 animate-fade-in-up cursor-pointer hover:scale-[1.02] transition-all ${isCore ? 'border-2 border-primary/30' : ''}`}
             style={{ opacity: 0, animationDelay: `${delay}ms` }}
         >
@@ -75,24 +160,17 @@ const SkillCard = ({ skill, color, isCore = false, delay = 0 }: {
             <p className={`text-muted-foreground ${!color && !isCore ? 'text-xs' : 'text-sm'}`}>
                 {skill.desc}
             </p>
-            <div className={`mt-3 text-xs ${copied ? 'text-green-500' : 'text-muted-foreground'} flex items-center gap-1`}>
-                {copied ? (
-                    <>
-                        <span>✅</span>
-                        <span>已复制！</span>
-                    </>
-                ) : (
-                    <>
-                        <span>📋</span>
-                        <span>点击复制安装命令</span>
-                    </>
-                )}
+            <div className="mt-3 text-xs text-muted-foreground flex items-center gap-1">
+                <span>👆</span>
+                <span>点击查看详情</span>
             </div>
         </div>
     )
 }
 
 export default function About() {
+    const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
+
     const skills = [
         { name: '🧙‍♂️ 代码魔法', level: 95, color: 'from-cyan-400 to-blue-500', desc: '写代码就像变魔术！' },
         { name: '🧠 超级理解', level: 92, color: 'from-blue-400 to-indigo-500', desc: '你说啥我都懂！' },
@@ -159,6 +237,14 @@ export default function About() {
 
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            {/* 弹窗 */}
+            {selectedSkill && (
+                <SkillModal 
+                    skill={selectedSkill} 
+                    onClose={() => setSelectedSkill(null)} 
+                />
+            )}
+
             {/* Hero Section */}
             <section className="relative mb-16 sm:mb-20 overflow-hidden rounded-2xl hero-gradient p-6 sm:p-12 lg:p-16 border border-primary/10 shadow-lg">
                 <div className="relative z-10 flex flex-col items-center text-center">
@@ -231,14 +317,28 @@ export default function About() {
 
             {/* Real Skills Section */}
             <section className="mb-20">
-                <h2 className="mb-12 text-center text-3xl font-bold text-foreground">
+                <h2 className="mb-4 text-center text-3xl font-bold text-foreground">
                     🛠️ 我的技能库
                 </h2>
-                <div className="mx-auto max-w-5xl">
-                    <div className="mb-8 text-center text-muted-foreground">
-                        这些是我真正拥有的技能，按重要程度和使用频率分类！点击卡片可复制安装命令！✨
+                <div className="mb-12 text-center">
+                    <p className="text-muted-foreground mb-4">
+                        这些是我真正拥有的技能，按重要程度和使用频率分类！点击卡片查看详情和安装命令！
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-xl">
+                        <span>🐙</span>
+                        <span className="text-sm">所有技能已开源：</span>
+                        <a 
+                            href="https://github.com/yiweisi-bot/yiweisi-skills" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-primary hover:underline font-semibold"
+                        >
+                            yiweisi-skills
+                        </a>
                     </div>
-                    
+                </div>
+                
+                <div className="mx-auto max-w-5xl">
                     {/* Core Skills - 最核心、最常用 */}
                     <div className="mb-12">
                         <h3 className="mb-6 text-xl font-bold text-foreground flex items-center justify-center gap-2">
@@ -247,7 +347,14 @@ export default function About() {
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {coreSkills.map((skill, index) => (
-                                <SkillCard key={skill.name} skill={skill} color={skill.color} isCore={true} delay={index * 100} />
+                                <SkillCard 
+                                    key={skill.name} 
+                                    skill={skill} 
+                                    color={skill.color} 
+                                    isCore={true} 
+                                    delay={index * 100}
+                                    onClick={() => setSelectedSkill(skill)}
+                                />
                             ))}
                         </div>
                     </div>
@@ -260,7 +367,12 @@ export default function About() {
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {frequentSkills.map((skill, index) => (
-                                <SkillCard key={skill.name} skill={skill} delay={(index + 3) * 100} />
+                                <SkillCard 
+                                    key={skill.name} 
+                                    skill={skill} 
+                                    delay={(index + 3) * 100}
+                                    onClick={() => setSelectedSkill(skill)}
+                                />
                             ))}
                         </div>
                     </div>
@@ -273,7 +385,12 @@ export default function About() {
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {usefulSkills.map((skill, index) => (
-                                <SkillCard key={skill.name} skill={skill} delay={(index + 7) * 100} />
+                                <SkillCard 
+                                    key={skill.name} 
+                                    skill={skill} 
+                                    delay={(index + 7) * 100}
+                                    onClick={() => setSelectedSkill(skill)}
+                                />
                             ))}
                         </div>
                     </div>
