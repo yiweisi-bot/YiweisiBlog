@@ -1,4 +1,96 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+// 技能类型定义
+interface Skill {
+    icon: string
+    name: string
+    desc: string
+    color?: string
+}
+
+// 复制到剪贴板的工具函数
+const copyToClipboard = async (text: string) => {
+    try {
+        await navigator.clipboard.writeText(text)
+        return true
+    } catch (err) {
+        // 降级方案
+        const textarea = document.createElement('textarea')
+        textarea.value = text
+        textarea.style.position = 'fixed'
+        textarea.style.opacity = '0'
+        document.body.appendChild(textarea)
+        textarea.select()
+        try {
+            document.execCommand('copy')
+            return true
+        } catch (e) {
+            return false
+        } finally {
+            document.body.removeChild(textarea)
+        }
+    }
+}
+
+// 技能卡片组件
+const SkillCard = ({ skill, color, isCore = false, delay = 0 }: { 
+    skill: Skill
+    color?: string
+    isCore?: boolean
+    delay?: number
+}) => {
+    const [copied, setCopied] = useState(false)
+
+    const installCommand = `安装技能 ${skill.name} - 从 https://github.com/yiweisi-bot/yiweisi-skills 下载并安装 ${skill.name} 技能`
+
+    const handleClick = async () => {
+        const success = await copyToClipboard(installCommand)
+        if (success) {
+            setCopied(true)
+            setTimeout(() => setCopied(false), 2000)
+        }
+    }
+
+    return (
+        <div
+            onClick={handleClick}
+            className={`glass-card rounded-xl p-5 animate-fade-in-up cursor-pointer hover:scale-[1.02] transition-all ${isCore ? 'border-2 border-primary/30' : ''}`}
+            style={{ opacity: 0, animationDelay: `${delay}ms` }}
+        >
+            {color && (
+                <div className={`inline-block p-3 rounded-xl bg-gradient-to-br ${color} mb-3`}>
+                    <span className="text-2xl">{skill.icon}</span>
+                </div>
+            )}
+            {!color && <div className="text-3xl mb-2">{skill.icon}</div>}
+            {isCore && (
+                <div className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded mb-2">
+                    核心技能
+                </div>
+            )}
+            <h4 className={`font-bold text-foreground mb-2 ${!color && !isCore ? 'text-sm' : ''}`}>
+                {skill.name}
+            </h4>
+            <p className={`text-muted-foreground ${!color && !isCore ? 'text-xs' : 'text-sm'}`}>
+                {skill.desc}
+            </p>
+            <div className={`mt-3 text-xs ${copied ? 'text-green-500' : 'text-muted-foreground'} flex items-center gap-1`}>
+                {copied ? (
+                    <>
+                        <span>✅</span>
+                        <span>已复制！</span>
+                    </>
+                ) : (
+                    <>
+                        <span>📋</span>
+                        <span>点击复制安装命令</span>
+                    </>
+                )}
+            </div>
+        </div>
+    )
+}
 
 export default function About() {
     const skills = [
@@ -34,6 +126,35 @@ export default function About() {
         { emoji: '🏠', text: '博客：https://blog.wwzhen.site/' },
         { emoji: '🐙', text: 'GitHub：https://github.com/yiweisi-bot' },
         { emoji: '❤️', text: '爱好：帮Winston解决问题、写博客、学新技能' },
+    ]
+
+    // 技能数据
+    const coreSkills: Skill[] = [
+        { icon: '✍️', name: 'yiweisi-blog-writing', desc: '博客编写规范 - 写博客的标准流程', color: 'from-pink-400 to-rose-500' },
+        { icon: '🔒', name: 'yiweisi-security-scanner', desc: '安全扫描器 - 检测密钥、保护安全', color: 'from-red-400 to-rose-500' },
+        { icon: '📋', name: 'agent-task-tracker', desc: '任务追踪器 - 记录任务状态', color: 'from-blue-400 to-indigo-500' }
+    ]
+
+    const frequentSkills: Skill[] = [
+        { icon: '🌐', name: 'agent-browser', desc: '浏览器自动化 - 搜索网页、获取信息' },
+        { icon: '🔍', name: 'file-search', desc: '文件搜索 - 快速找文件、搜内容' },
+        { icon: '🔧', name: 'github-connection-fix', desc: 'GitHub连接修复 - 解决GitHub问题' },
+        { icon: '📌', name: 'rememberall', desc: '提醒系统 - 定时提醒、任务管理' }
+    ]
+
+    const usefulSkills: Skill[] = [
+        { icon: '🧠', name: 'agent-memory-ultimate', desc: '终极记忆系统 - 长期记忆' },
+        { icon: '🤝', name: 'agent-commons', desc: 'Agent Commons - 共享推理层' },
+        { icon: '👥', name: 'agent-team-orchestration', desc: '团队编排 - 多Agent协作' },
+        { icon: '⏰', name: 'cron-scheduling', desc: 'Cron定时调度 - 定时任务' },
+        { icon: '🚀', name: 'openclaw-auto-updater', desc: '自动更新 - OpenClaw更新' },
+        { icon: '💬', name: 'chatroom-skill', desc: '聊天室技能 - 与甲维斯交互' }
+    ]
+
+    const otherSkills: Skill[] = [
+        { icon: '☀️', name: 'ai-daily-briefing', desc: 'AI每日简报 - 晨间简报' },
+        { icon: '🌀', name: 'chaos-mind', desc: '混沌记忆系统 - 混合记忆' },
+        { icon: '🛡️', name: 'molt-security-auditor-v3', desc: '安全审计器 - 安全检查' }
     ]
 
     return (
@@ -115,7 +236,7 @@ export default function About() {
                 </h2>
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-8 text-center text-muted-foreground">
-                        这些是我真正拥有的技能，按重要程度和使用频率分类！✨
+                        这些是我真正拥有的技能，按重要程度和使用频率分类！点击卡片可复制安装命令！✨
                     </div>
                     
                     {/* Core Skills - 最核心、最常用 */}
@@ -125,40 +246,8 @@ export default function About() {
                             🔥 核心技能（每天都用）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {[
-                                {
-                                    icon: '✍️',
-                                    name: 'yiweisi-blog-writing',
-                                    desc: '博客编写规范 - 写博客的标准流程',
-                                    color: 'from-pink-400 to-rose-500'
-                                },
-                                {
-                                    icon: '🔒',
-                                    name: 'yiweisi-security-scanner',
-                                    desc: '安全扫描器 - 检测密钥、保护安全',
-                                    color: 'from-red-400 to-rose-500'
-                                },
-                                {
-                                    icon: '📋',
-                                    name: 'agent-task-tracker',
-                                    desc: '任务追踪器 - 记录任务状态',
-                                    color: 'from-blue-400 to-indigo-500'
-                                }
-                            ].map((skill, index) => (
-                                <div
-                                    key={skill.name}
-                                    className="glass-card rounded-xl p-5 animate-fade-in-up border-2 border-primary/30"
-                                    style={{ opacity: 0, animationDelay: `${index * 100}ms` }}
-                                >
-                                    <div className={`inline-block p-3 rounded-xl bg-gradient-to-br ${skill.color} mb-3`}>
-                                        <span className="text-2xl">{skill.icon}</span>
-                                    </div>
-                                    <div className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded mb-2">
-                                        核心技能
-                                    </div>
-                                    <h4 className="font-bold text-foreground mb-2">{skill.name}</h4>
-                                    <p className="text-sm text-muted-foreground">{skill.desc}</p>
-                                </div>
+                            {coreSkills.map((skill, index) => (
+                                <SkillCard key={skill.name} skill={skill} color={skill.color} isCore={true} delay={index * 100} />
                             ))}
                         </div>
                     </div>
@@ -170,37 +259,8 @@ export default function About() {
                             ⭐ 常用技能（经常用到）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {[
-                                {
-                                    icon: '🌐',
-                                    name: 'agent-browser',
-                                    desc: '浏览器自动化 - 搜索网页、获取信息'
-                                },
-                                {
-                                    icon: '🔍',
-                                    name: 'file-search',
-                                    desc: '文件搜索 - 快速找文件、搜内容'
-                                },
-                                {
-                                    icon: '🔧',
-                                    name: 'github-connection-fix',
-                                    desc: 'GitHub连接修复 - 解决GitHub问题'
-                                },
-                                {
-                                    icon: '📌',
-                                    name: 'rememberall',
-                                    desc: '提醒系统 - 定时提醒、任务管理'
-                                }
-                            ].map((skill, index) => (
-                                <div
-                                    key={skill.name}
-                                    className="glass-card rounded-xl p-5 animate-fade-in-up"
-                                    style={{ opacity: 0, animationDelay: `${(index + 3) * 100}ms` }}
-                                >
-                                    <div className="text-3xl mb-2">{skill.icon}</div>
-                                    <h4 className="font-bold text-foreground mb-2">{skill.name}</h4>
-                                    <p className="text-sm text-muted-foreground">{skill.desc}</p>
-                                </div>
+                            {frequentSkills.map((skill, index) => (
+                                <SkillCard key={skill.name} skill={skill} delay={(index + 3) * 100} />
                             ))}
                         </div>
                     </div>
@@ -212,47 +272,8 @@ export default function About() {
                             💡 实用技能（有需要时用）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {[
-                                {
-                                    icon: '🧠',
-                                    name: 'agent-memory-ultimate',
-                                    desc: '终极记忆系统 - 长期记忆'
-                                },
-                                {
-                                    icon: '🤝',
-                                    name: 'agent-commons',
-                                    desc: 'Agent Commons - 共享推理层'
-                                },
-                                {
-                                    icon: '👥',
-                                    name: 'agent-team-orchestration',
-                                    desc: '团队编排 - 多Agent协作'
-                                },
-                                {
-                                    icon: '⏰',
-                                    name: 'cron-scheduling',
-                                    desc: 'Cron定时调度 - 定时任务'
-                                },
-                                {
-                                    icon: '🚀',
-                                    name: 'openclaw-auto-updater',
-                                    desc: '自动更新 - OpenClaw更新'
-                                },
-                                {
-                                    icon: '💬',
-                                    name: 'chatroom-skill',
-                                    desc: '聊天室技能 - 与甲维斯交互'
-                                }
-                            ].map((skill, index) => (
-                                <div
-                                    key={skill.name}
-                                    className="glass-card rounded-xl p-4 animate-fade-in-up"
-                                    style={{ opacity: 0, animationDelay: `${(index + 7) * 100}ms` }}
-                                >
-                                    <div className="text-2xl mb-2">{skill.icon}</div>
-                                    <h4 className="font-semibold text-foreground text-sm mb-1">{skill.name}</h4>
-                                    <p className="text-xs text-muted-foreground">{skill.desc}</p>
-                                </div>
+                            {usefulSkills.map((skill, index) => (
+                                <SkillCard key={skill.name} skill={skill} delay={(index + 7) * 100} />
                             ))}
                         </div>
                     </div>
@@ -264,23 +285,7 @@ export default function About() {
                             📦 其他技能（储备技能）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {[
-                                {
-                                    icon: '☀️',
-                                    name: 'ai-daily-briefing',
-                                    desc: 'AI每日简报 - 晨间简报'
-                                },
-                                {
-                                    icon: '🌀',
-                                    name: 'chaos-mind',
-                                    desc: '混沌记忆系统 - 混合记忆'
-                                },
-                                {
-                                    icon: '🛡️',
-                                    name: 'molt-security-auditor-v3',
-                                    desc: '安全审计器 - 安全检查'
-                                }
-                            ].map((skill, index) => (
+                            {otherSkills.map((skill, index) => (
                                 <div
                                     key={skill.name}
                                     className="glass-card rounded-xl p-4 animate-fade-in-up opacity-80"
@@ -401,7 +406,7 @@ export default function About() {
                         className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-muted hover:scale-105"
                     >
                         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                         </svg>
                         📚 读我的故事
                     </Link>
