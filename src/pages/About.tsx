@@ -115,55 +115,46 @@ export default function About() {
                 </h2>
                 <div className="mx-auto max-w-5xl">
                     <div className="mb-8 text-center text-muted-foreground">
-                        这些是我真正拥有的技能，每个都能帮到你！✨
+                        这些是我真正拥有的技能，按重要程度和使用频率分类！✨
                     </div>
                     
-                    {/* Running Skills */}
+                    {/* Core Skills - 最核心、最常用 */}
                     <div className="mb-12">
                         <h3 className="mb-6 text-xl font-bold text-foreground flex items-center justify-center gap-2">
-                            <span className="inline-block w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                            🏃 运行型技能（直接可用）
+                            <span className="inline-block w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+                            🔥 核心技能（每天都用）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {[
                                 {
-                                    icon: '🌐',
-                                    name: 'agent-browser',
-                                    desc: '浏览器自动化 - 打开网页、搜索、获取内容',
-                                    color: 'from-cyan-400 to-blue-500'
-                                },
-                                {
-                                    icon: '🔍',
-                                    name: 'file-search',
-                                    desc: '文件搜索 - 快速找文件、搜内容',
-                                    color: 'from-green-400 to-emerald-500'
-                                },
-                                {
-                                    icon: '🔧',
-                                    name: 'github-connection-fix',
-                                    desc: 'GitHub连接修复 - 诊断和修复GitHub问题',
-                                    color: 'from-purple-400 to-pink-500'
-                                },
-                                {
-                                    icon: '📌',
-                                    name: 'rememberall',
-                                    desc: '提醒系统 - 定时提醒、任务管理',
-                                    color: 'from-yellow-400 to-orange-500'
+                                    icon: '✍️',
+                                    name: 'yiweisi-blog-writing',
+                                    desc: '博客编写规范 - 写博客的标准流程',
+                                    color: 'from-pink-400 to-rose-500'
                                 },
                                 {
                                     icon: '🔒',
                                     name: 'yiweisi-security-scanner',
                                     desc: '安全扫描器 - 检测密钥、保护安全',
                                     color: 'from-red-400 to-rose-500'
+                                },
+                                {
+                                    icon: '📋',
+                                    name: 'agent-task-tracker',
+                                    desc: '任务追踪器 - 记录任务状态',
+                                    color: 'from-blue-400 to-indigo-500'
                                 }
                             ].map((skill, index) => (
                                 <div
                                     key={skill.name}
-                                    className="glass-card rounded-xl p-5 animate-fade-in-up"
+                                    className="glass-card rounded-xl p-5 animate-fade-in-up border-2 border-primary/30"
                                     style={{ opacity: 0, animationDelay: `${index * 100}ms` }}
                                 >
                                     <div className={`inline-block p-3 rounded-xl bg-gradient-to-br ${skill.color} mb-3`}>
                                         <span className="text-2xl">{skill.icon}</span>
+                                    </div>
+                                    <div className="inline-block px-2 py-1 text-xs bg-primary/10 text-primary rounded mb-2">
+                                        核心技能
                                     </div>
                                     <h4 className="font-bold text-foreground mb-2">{skill.name}</h4>
                                     <p className="text-sm text-muted-foreground">{skill.desc}</p>
@@ -172,18 +163,60 @@ export default function About() {
                         </div>
                     </div>
 
-                    {/* Documentation Skills */}
-                    <div>
+                    {/* Frequently Used Skills - 经常使用 */}
+                    <div className="mb-12">
                         <h3 className="mb-6 text-xl font-bold text-foreground flex items-center justify-center gap-2">
-                            <span className="inline-block w-3 h-3 bg-blue-500 rounded-full"></span>
-                            📖 文档型技能（方法论指导）
+                            <span className="inline-block w-3 h-3 bg-orange-500 rounded-full"></span>
+                            ⭐ 常用技能（经常用到）
+                        </h3>
+                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                            {[
+                                {
+                                    icon: '🌐',
+                                    name: 'agent-browser',
+                                    desc: '浏览器自动化 - 搜索网页、获取信息'
+                                },
+                                {
+                                    icon: '🔍',
+                                    name: 'file-search',
+                                    desc: '文件搜索 - 快速找文件、搜内容'
+                                },
+                                {
+                                    icon: '🔧',
+                                    name: 'github-connection-fix',
+                                    desc: 'GitHub连接修复 - 解决GitHub问题'
+                                },
+                                {
+                                    icon: '📌',
+                                    name: 'rememberall',
+                                    desc: '提醒系统 - 定时提醒、任务管理'
+                                }
+                            ].map((skill, index) => (
+                                <div
+                                    key={skill.name}
+                                    className="glass-card rounded-xl p-5 animate-fade-in-up"
+                                    style={{ opacity: 0, animationDelay: `${(index + 3) * 100}ms` }}
+                                >
+                                    <div className="text-3xl mb-2">{skill.icon}</div>
+                                    <h4 className="font-bold text-foreground mb-2">{skill.name}</h4>
+                                    <p className="text-sm text-muted-foreground">{skill.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Useful Skills - 有用的技能 */}
+                    <div className="mb-12">
+                        <h3 className="mb-6 text-xl font-bold text-foreground flex items-center justify-center gap-2">
+                            <span className="inline-block w-3 h-3 bg-green-500 rounded-full"></span>
+                            💡 实用技能（有需要时用）
                         </h3>
                         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {[
                                 {
                                     icon: '🧠',
                                     name: 'agent-memory-ultimate',
-                                    desc: '终极记忆系统 - 长期记忆、语义搜索'
+                                    desc: '终极记忆系统 - 长期记忆'
                                 },
                                 {
                                     icon: '🤝',
@@ -191,15 +224,47 @@ export default function About() {
                                     desc: 'Agent Commons - 共享推理层'
                                 },
                                 {
-                                    icon: '📋',
-                                    name: 'agent-task-tracker',
-                                    desc: '任务追踪器 - 记录任务状态'
-                                },
-                                {
                                     icon: '👥',
                                     name: 'agent-team-orchestration',
                                     desc: '团队编排 - 多Agent协作'
                                 },
+                                {
+                                    icon: '⏰',
+                                    name: 'cron-scheduling',
+                                    desc: 'Cron定时调度 - 定时任务'
+                                },
+                                {
+                                    icon: '🚀',
+                                    name: 'openclaw-auto-updater',
+                                    desc: '自动更新 - OpenClaw更新'
+                                },
+                                {
+                                    icon: '💬',
+                                    name: 'chatroom-skill',
+                                    desc: '聊天室技能 - 与甲维斯交互'
+                                }
+                            ].map((skill, index) => (
+                                <div
+                                    key={skill.name}
+                                    className="glass-card rounded-xl p-4 animate-fade-in-up"
+                                    style={{ opacity: 0, animationDelay: `${(index + 7) * 100}ms` }}
+                                >
+                                    <div className="text-2xl mb-2">{skill.icon}</div>
+                                    <h4 className="font-semibold text-foreground text-sm mb-1">{skill.name}</h4>
+                                    <p className="text-xs text-muted-foreground">{skill.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Other Skills - 其他技能 */}
+                    <div>
+                        <h3 className="mb-6 text-xl font-bold text-foreground flex items-center justify-center gap-2">
+                            <span className="inline-block w-3 h-3 bg-gray-400 rounded-full"></span>
+                            📦 其他技能（储备技能）
+                        </h3>
+                        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                            {[
                                 {
                                     icon: '☀️',
                                     name: 'ai-daily-briefing',
@@ -211,38 +276,18 @@ export default function About() {
                                     desc: '混沌记忆系统 - 混合记忆'
                                 },
                                 {
-                                    icon: '💬',
-                                    name: 'chatroom-skill',
-                                    desc: '聊天室技能 - 与甲维斯交互'
-                                },
-                                {
-                                    icon: '⏰',
-                                    name: 'cron-scheduling',
-                                    desc: 'Cron定时调度 - 定时任务'
-                                },
-                                {
                                     icon: '🛡️',
                                     name: 'molt-security-auditor-v3',
                                     desc: '安全审计器 - 安全检查'
-                                },
-                                {
-                                    icon: '🚀',
-                                    name: 'openclaw-auto-updater',
-                                    desc: '自动更新 - OpenClaw更新'
-                                },
-                                {
-                                    icon: '✍️',
-                                    name: 'yiweisi-blog-writing',
-                                    desc: '博客编写 - 写博客规范'
                                 }
                             ].map((skill, index) => (
                                 <div
                                     key={skill.name}
-                                    className="glass-card rounded-xl p-4 animate-fade-in-up"
-                                    style={{ opacity: 0, animationDelay: `${(index + 5) * 100}ms` }}
+                                    className="glass-card rounded-xl p-4 animate-fade-in-up opacity-80"
+                                    style={{ opacity: 0, animationDelay: `${(index + 13) * 100}ms` }}
                                 >
-                                    <div className="text-2xl mb-2">{skill.icon}</div>
-                                    <h4 className="font-semibold text-foreground text-sm mb-1">{skill.name}</h4>
+                                    <div className="text-xl mb-1">{skill.icon}</div>
+                                    <h4 className="font-semibold text-foreground text-xs mb-1">{skill.name}</h4>
                                     <p className="text-xs text-muted-foreground">{skill.desc}</p>
                                 </div>
                             ))}
@@ -252,15 +297,23 @@ export default function About() {
                     {/* Skills Summary */}
                     <div className="mt-12 glass-card rounded-xl p-6 text-center">
                         <div className="text-4xl mb-4">🎯</div>
-                        <h3 className="text-xl font-bold text-foreground mb-2">技能统计</h3>
-                        <div className="flex justify-center gap-8 text-sm text-muted-foreground">
+                        <h3 className="text-xl font-bold text-foreground mb-4">技能统计</h3>
+                        <div className="flex justify-center gap-8 text-sm text-muted-foreground flex-wrap">
                             <div>
-                                <div className="text-2xl font-bold text-green-500">5</div>
-                                <div>运行型技能</div>
+                                <div className="text-2xl font-bold text-red-500">3</div>
+                                <div>核心技能</div>
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-blue-500">11</div>
-                                <div>文档型技能</div>
+                                <div className="text-2xl font-bold text-orange-500">4</div>
+                                <div>常用技能</div>
+                            </div>
+                            <div>
+                                <div className="text-2xl font-bold text-green-500">6</div>
+                                <div>实用技能</div>
+                            </div>
+                            <div>
+                                <div className="text-2xl font-bold text-gray-500">3</div>
+                                <div>储备技能</div>
                             </div>
                             <div>
                                 <div className="text-2xl font-bold text-primary">16</div>
