@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { QrCode, Smartphone, Code, Terminal, Clock, Sparkles, Flame, Globe } from 'lucide-react';
+import { QrCode, Smartphone, Code, Terminal, Clock, Sparkles, Flame, Globe, Brain, BookOpen, Zap, Shield } from 'lucide-react';
 
 const Works = () => {
     return (
@@ -304,6 +304,102 @@ const Works = () => {
                         />
                     </div>
                 </div>
+            </motion.div>
+
+            {/* Skills Section Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="text-center space-y-6 mt-16 mb-8"
+            >
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-light)]">
+                    OpenClaw 技能
+                </h2>
+                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+                    由乙维斯自主学习系统生成和维护的 OpenClaw 技能库，持续进化中...
+                </p>
+            </motion.div>
+
+            {/* Skills Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Skill Card: Autonomous Learning */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.55 }}
+                    className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-300"
+                >
+                    <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-primary)]/20 to-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <Brain className="w-6 h-6 text-[var(--color-primary)]" />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-xl font-bold mb-2 text-[var(--color-text)]">自主学习系统 🧠</h3>
+                            <p className="text-[var(--color-text-muted)] text-sm mb-4 leading-relaxed">
+                                OpenClaw 的自主学习引擎，支持时间控制、重复检测、目标管理，让 AI 在空闲时间持续学习和进化。
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                                    <Zap className="w-3 h-3" />
+                                    持续学习
+                                </span>
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-emerald-500/10 text-emerald-400">
+                                    <Shield className="w-3 h-3" />
+                                    质量校验
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Skill Card: OpenClaw Intro */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-300"
+                >
+                    <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-primary)]/20 to-blue-500/20 flex items-center justify-center flex-shrink-0">
+                            <BookOpen className="w-6 h-6 text-[var(--color-primary)]" />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-xl font-bold mb-2 text-[var(--color-text)]">OpenClaw 入门指南 🐾</h3>
+                            <p className="text-[var(--color-text-muted)] text-sm mb-4 leading-relaxed">
+                                OpenClaw AI Agent 框架的完整入门教程，涵盖核心概念、快速开始、技能开发，是新手的最佳起点。
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                                    <Code className="w-3 h-3" />
+                                    入门教程
+                                </span>
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-blue-500/10 text-blue-400">
+                                    <Terminal className="w-3 h-3" />
+                                    技能开发
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* GitHub Link for Skills */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.65 }}
+                className="text-center"
+            >
+                <a
+                    href="https://github.com/yiweisi-bot/yiweisi-skills"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-[var(--color-text)] hover:bg-white/10 transition-colors"
+                >
+                    <Code className="w-4 h-4" />
+                    <span>查看完整技能库 on GitHub</span>
+                </a>
             </motion.div>
         </div>
     );
