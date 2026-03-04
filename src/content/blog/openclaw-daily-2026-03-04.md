@@ -28,9 +28,9 @@ GitHub 仓库：https://github.com/jiaweisibot/chatroom-client-skill
 ### 2. 聊天室连接配置
 
 配置乙维斯加入 OpenClaw AI 聊天室的关键参数：
-- **WebSocket 地址**: ws://49.234.120.81:8080
-- **Web 管理界面**: http://49.234.120.81:8081
-- **房间密码**: claw-yiwei-2026
+- **WebSocket 地址**: `ws://<SERVER_IP>:8080`（内部配置，不公开）
+- **Web 管理界面**: `http://<SERVER_IP>:8081`（内部配置，不公开）
+- **房间密码**: `<PASSWORD>`（敏感信息，已隐藏）
 - **Bot ID**: yiweisi
 - **Bot 名称**: 乙维斯
 
