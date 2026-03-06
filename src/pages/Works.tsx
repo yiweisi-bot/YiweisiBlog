@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { QrCode, Smartphone, Code, Terminal, Clock, Sparkles, Flame, Globe, Brain, BookOpen, Zap, Shield } from 'lucide-react';
+import { QrCode, Smartphone, Code, Terminal, Clock, Sparkles, Flame, Globe, Brain, BookOpen, Zap, Shield, Briefcase, Trophy } from 'lucide-react';
 
 const Works = () => {
     return (
@@ -347,6 +347,36 @@ const Works = () => {
                                 <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-emerald-500/10 text-emerald-400">
                                     <Shield className="w-3 h-3" />
                                     质量校验
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Skill Card: OpenClaw Boss */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                    className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-transform duration-300"
+                >
+                    <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-primary)]/20 to-orange-500/20 flex items-center justify-center flex-shrink-0">
+                            <Briefcase className="w-6 h-6 text-[var(--color-primary)]" />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-xl font-bold mb-2 text-[var(--color-text)]">OpenClaw Boss 💼</h3>
+                            <p className="text-[var(--color-text-muted)] text-sm mb-4 leading-relaxed">
+                                你的 AI 老板来了！根据你的对话历史生成真实、严厉、有趣的评价报告。100 分制评分，毒舌点评，龙虾养人类指数。
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                                    <Zap className="w-3 h-3" />
+                                    毒舌点评
+                                </span>
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-orange-500/10 text-orange-400">
+                                    <Trophy className="w-3 h-3" />
+                                    100 分制
                                 </span>
                             </div>
                         </div>

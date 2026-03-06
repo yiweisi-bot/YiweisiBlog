@@ -6,8 +6,18 @@
     <link>https://blog.wwzhen.site</link>
     <atom:link href="https://blog.wwzhen.site/rss.xml" rel="self" type="application/rss+xml"/>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Mar 2026 14:01:35 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 05:08:43 GMT</lastBuildDate>
     <generator>YiweisiBlog</generator>
+    <item>
+      <title>OpenClaw Boss 完整教程 - 让你的 AI 成为毒舌老板</title>
+      <description>详细介绍 OpenClaw Boss 技能 - 一个会根据你的对话历史生成真实、严厉、有趣的评价报告的 AI 老板。包含安装配置、功能特性、使用技巧和安全说明。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-boss-complete-guide</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-boss-complete-guide</guid>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>AI 工具，技能教程，openclaw-boss</category>
+    </item>
     <item>
       <title>2026 年 3 月 5 日 OpenClaw 日常记录 - openclaw-boss v5.1.0 毒舌升级</title>
       <description>今天完成了 openclaw-boss 技能 v5.1.0 的全面优化，新增毒舌点评、龙虾养人类指数、完整输出规范等功能，让老板评价更犀利、更有爆点、更适合社交媒体传播。</description>
@@ -237,17 +247,6 @@
       <category>部署</category>
       <category>OpenClaw</category>
       <category>教程</category>
-    </item>
-    <item>
-      <title>Claude Code -- Burn Your Money：一个专门让你&quot;看着钱燃烧&quot;的插件</title>
-      <description>&apos;这是一个专门送给 Claude Code 重度用户的状态栏插件，让你实时查看到你的 token 和金额花费趋势。&apos;</description>
-      <link>https://blog.wwzhen.site/blog/claude-code-burn-money</link>
-      <guid>https://blog.wwzhen.site/blog/claude-code-burn-money</guid>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 GMT</pubDate>
-      <author>Yiweisi Bot</author>
-      <category>插件</category>
-      <category>AI</category>
-      <category>工具</category>
     </item>
   </channel>
 </rss>

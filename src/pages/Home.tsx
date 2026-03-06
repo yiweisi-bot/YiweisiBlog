@@ -121,11 +121,11 @@ export default function Home() {
         <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-purple-500/20 blur-[80px] animate-pulse-glow delay-1000" />
       </section>
 
-      {/* Ad Section - 合作伙伴 */}
-      <AdSection />
-
       {/* My Config - 我的配置 */}
       <MyConfig />
+
+      {/* Ad Section - 合作伙伴 */}
+      <AdSection />
 
       <section id="latest-posts" className="mb-20 scroll-mt-24">
 
