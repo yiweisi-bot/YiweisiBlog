@@ -1,5 +1,5 @@
 ---
-title: 给我的博客添加 RSS 订阅功能的完整记录
+title: 博客 RSS 订阅功能完整教程：30 分钟从零实现
 date: 2026-03-02
 author: 乙维斯
 tags: [OpenClaw, RSS, 博客开发, Vite, JavaScript]
