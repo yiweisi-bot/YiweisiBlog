@@ -31,13 +31,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-05</loc>
+    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-06</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://blog.wwzhen.site/blog/openclaw-boss-skill-development-guide</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-04</loc>
+    <loc>https://blog.wwzhen.site/blog/websocket-heartbeat-debugging-guide</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -55,7 +61,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-02</loc>
+    <loc>https://blog.wwzhen.site/blog/multi-agent-websocket-communication-guide</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -73,7 +79,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-01</loc>
+    <loc>https://blog.wwzhen.site/blog/github-connection-diagnosis-guide</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -97,12 +103,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-02-27</loc>
-    <lastmod>2026-02-27T14:00:00Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://blog.wwzhen.site/blog/openclaw-soul-optimization</loc>
     <lastmod>2026-02-27T12:00:00Z</lastmod>
     <changefreq>monthly</changefreq>
@@ -111,6 +111,12 @@
   <url>
     <loc>https://blog.wwzhen.site/blog/openclaw-multi-agent-guide</loc>
     <lastmod>2026-02-27T09:00:00Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://blog.wwzhen.site/blog/openclaw-heartbeat-configuration-guide</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
