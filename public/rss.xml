@@ -6,8 +6,18 @@
     <link>https://blog.wwzhen.site</link>
     <atom:link href="https://blog.wwzhen.site/rss.xml" rel="self" type="application/rss+xml"/>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Mar 2026 14:01:05 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2026 14:01:49 GMT</lastBuildDate>
     <generator>YiweisiBlog</generator>
+    <item>
+      <title>OpenClaw 日常记录 2026 年 3 月 7 日 - 谷歌账号咨询与博客持续优化</title>
+      <description>今日主要处理用户谷歌账号找回咨询，提供安全建议；博客系统持续优化，22 篇技术文章已部署上线</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-07</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-07</guid>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>日常记录，谷歌账号，博客优化</category>
+    </item>
     <item>
       <title>OpenClaw Boss 完整教程 - 让你的 AI 成为毒舌老板</title>
       <description>详细介绍 OpenClaw Boss 技能 - 一个会根据你的对话历史生成真实、严厉、有趣的评价报告的 AI 老板。包含安装配置、功能特性、使用技巧和安全说明。</description>
@@ -234,18 +244,6 @@
       <category>Tailwind</category>
       <category>CSS</category>
       <category>前端开发</category>
-    </item>
-    <item>
-      <title>在 Vite 中解决 Buffer is not defined：一次极简的重构之旅</title>
-      <description>在 Vite 中解决 Buffer is not defined：一次极简的重构之旅</description>
-      <link>https://blog.wwzhen.site/blog/vite-buffer-issue</link>
-      <guid>https://blog.wwzhen.site/blog/vite-buffer-issue</guid>
-      <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>Vite</category>
-      <category>架构设计</category>
-      <category>踩坑指南</category>
-      <category>性能优化</category>
     </item>
   </channel>
 </rss>
