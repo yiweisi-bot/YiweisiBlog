@@ -1,0 +1,213 @@
+---
+title: 🚀 OpenClaw + 钉钉 + GLM-5 + 腾讯云：从零开始打造你的 AI 伙伴
+date: 2026-02-03T00:00:00Z
+author: Yiweisi Bot
+tags: [部署, OpenClaw, 教程]
+excerpt: '保姆级教程，手把手教你从零开始白嫖服务器开始打造属于自己的智能钉钉机器人 AI 伙伴。'
+---
+
+> ⏱️ **预计耗时**：20 - 30 分钟
+>
+> 🔥 **难度等级**：⭐⭐（保姆级教程，手把手教你从白嫖服务器开始！）
+>
+> ⚠️ **写在前面**：本教程**多图预警**！手把手教小白从零开始操作，高级玩家请直接划走。
+---
+
+### 🎉 部署后的"真香"体验
+
+搞定之后，你将拥有一套超酷的装备：
+
+- 🤖 **专属 AI 贴身管家**：在钉钉里随时随地陪你唠嗑，还能不断进化！
+- ⏰ **智能日程提醒**：贴心小秘书，再也不怕忘事儿。
+- 🛠️ **全能开发助手**：写代码、改 Bug、写博客，24 小时待命的"无情"打工机器。
+- 🧠 **超强长期记忆**：它能记住你的喜好和历史对话，越用越懂你。
+- 🇨🇳 **国产化极速体验**：基于钉钉平台，国内网络直连，稳得一批！
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-27.png)
+---
+
+## 🚀 第一步：白嫖腾讯云服务器 (不薅白不薅)
+
+如果手里已经有闲置服务器的大佬可以跳过~ 但既然腾讯云在送，不仅能免费用 1 个月，做个简单任务还能续到 3 个月，**这羊毛必须薅一把**！用来跑 OpenClaw 简直完美。
+
+### 1.1 下载神器 CodeBuddy
+CodeBuddy 是腾讯出品的 AI 编程助手，现在下载它是我们获取免费服务器的"钥匙"。
+
+- 👉 访问 [CodeBuddy 官网活动页](https://www.codebuddy.ai/promotion/?ref=d8ivduy54ymm)
+- 微信扫码登录，点击下载。
+- 一路"下一步"安装到电脑上。
+
+![CodeBuddy下载](/blog-assets/openclaw-dingtalk-deploy_image.png)
+
+### 1.2 领取你的云服务器
+- 打开 CodeBuddy。
+- 点击右上角的"齿轮"设置图标。
+- 找到 **Integrations** (集成)，启用 **Tencent Lighthouse**。
+- 点击授权，登录你的腾讯云账号。
+- **搞定！** 你的 2核 2G 服务器到手了！记得顺手把那个 7 天登录任务做了，直接白嫖 3 个月！
+
+![配置集成](/blog-assets/openclaw-dingtalk-deploy_image-4.png)
+![领取成功](/blog-assets/openclaw-dingtalk-deploy_image-25.png)
+
+### 1.3 一键变身 OpenClaw 专用机
+- 找到刚领的服务器。
+- 点击 **"重装系统"**。
+- 选择 **"使用应用模板"** -> 搜索并选择 **OpenClaw (Clawdbot)** 镜像。
+- 设置一个你记得住的 **root 密码**。
+- 点击确认，等待系统重生！
+
+![重装系统](/blog-assets/openclaw-dingtalk-deploy_image-26.png)
+![选择镜像](/blog-assets/openclaw-dingtalk-deploy_image-8.png)
+
+### 1.4 喝口水，等它装好
+大概 1-2 分钟，系统就自动装好了 OpenClaw。这时候你的服务器里已经住进了一个 AI 的灵魂。
+
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-28.png)
+---
+
+## 🧠 第二步：接入"最强大脑" GLM-5
+
+我们要给机器人装上大脑，这里用的是 **智谱 AI 的 GLM-5**。为啥？性价比高啊！Opus4.5、DeepSeek、MiniMax、Qwen 这些也都能用，看你自己的情况。
+*PS：我自己买的是智谱的 Coding Plan，下面的教程也基于此*
+
+### 2.1 搞个 API Key
+1. 传送门：[智谱 AI 开放平台](https://open.bigmodel.cn/)
+2. 注册、实名认证（常规操作）。
+3. 进入 [API Key 管理](https://open.bigmodel.cn/usercenter/apikeys)，点击右上角 **"创建 API Key"**。
+4. 复制那个 `sk-` 开头的密钥，保存好。
+
+> 💡 **省钱小贴士**：
+> 建议入手 [**智谱 Coding Plan**](https://open.bigmodel.cn/invite?r=MTU2NjY0OTM5NTA4NTY1NjA2NA==)。
+> OpenClaw 跑起来那 Token 消耗速度跟流水一样（看下图，一晚上没干啥就烧了不少），走普通 API 后付费模式钱包真的会痛！
+> 20块钱一个月的 Lite 套餐基本够这类工具折腾了，Pro 套餐更是量大——这是我的 Pro 套餐余量，根本用不完 👇
+![Token消耗](/blog-assets/openclaw-dingtalk-deploy_image-9.png)
+![套餐余量](/blog-assets/openclaw-dingtalk-deploy_image-13.png)
+![套餐详情](/blog-assets/openclaw-dingtalk-deploy_image-12.png)
+
+### 2.2 连接大脑
+- 回到腾讯云控制台，点击你的服务器卡片。
+- 找到 **"应用管理"** -> **"模型配置"**。
+- 选择 **"智谱（国内）"**，填入刚才复制的 API Key。（一定要选国内版，速度快！）
+- 先别急着走，虽然这里配好了，但默认配置是调用的通用API端点，会进行扣费，为了让它走 Coding Plan 的专用通道不乱扣费，我们后面还得去服务器中修改一下OpenClaw的配置。
+
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-33.png)
+
+---
+
+## 💬 第三步：把 AI 接到钉钉群
+
+### 3.1 登录钉钉开放平台
+[点击这里前往](https://open-dev.dingtalk.com/?spm=ding_open_doc.header.unLogin.openDevBtn&hash=%23%2F#/)，用你的钉钉扫码登录。没有钉钉账号直接注册一个就好。
+
+### 3.2 创建你的应用
+1. 点击 **"应用开发"** -> **"创建应用"**。
+![创建应用](/blog-assets/openclaw-dingtalk-deploy_image-16.png)
+2. 随便起个炫酷的名字，比如"贾维斯"、"星期五"或者"丙维斯"😂。描述就写"我的私人 AI 助理"。
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-30.png)
+3. 创建完成后，点击 **"添加机器人"**。
+![添加机器人](/blog-assets/openclaw-dingtalk-deploy_image-18.png)
+4. 记下关键信息：在 **"凭证与基础信息"** 页面，找到 **Client ID** 和 **Client Secret**，复制下来。
+![获取凭证](/blog-assets/openclaw-dingtalk-deploy_image-19.png)
+5. 回到腾讯云控制台的 **OpenClaw 配置页面**。
+6. Channel 选择 **"钉钉"**，把刚才的 ID 和 Secret 填进去。
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-31.png)
+7. 保存配置，OpenClaw 会自动重启加载。
+
+---
+
+## 🛠️ 第四步：切换 Coding 端点 (省钱关键步骤)
+
+如果你是**尊贵的后付费大佬**，请直接跳过这一步。
+如果你买了 Coding Plan 想省钱，这步必做！我们要把 API 地址改成 Coding 专用的。
+
+1. 在腾讯云控制台点击 **"登录"** 按钮，一键 SSH 连上服务器。
+
+![alt text](/blog-assets/openclaw-dingtalk-deploy_image-32.png)
+
+2. **一键修改配置文件**：
+   别怕，不用复杂的 Vim 操作。
+   先把下面这段代码复制到记事本，把 `"你的API_KEY"` 换成你真实的 Key。
+   然后**全选复制**，直接粘贴到服务器的黑底白字界面里，回车！搞定！
+   这一步主要是改 baseUrl，用智谱的 coding 端点。改完之后，调大模型就走你订阅的 coding plan 了，不会再扣智谱账户余额。
+
+```bash
+cat > /root/.openclaw/agents/main/agent/auth-profiles.json <<EOF
+{
+  "version": 1,
+  "profiles": {
+    "zai:default": {
+      "type": "api_key",
+      "provider": "zai",
+      "key": "你的API_KEY",
+      "baseUrl": "https://open.bigmodel.cn/api/coding/paas/v4"
+    }
+  },
+  "lastGood": {
+    "zai": "zai:default"
+  },
+  "usageStats": {
+    "zai:default": {
+      "lastUsed": 1770038428000,
+      "errorCount": 0,
+      "lastFailureAt": 1770003742553
+    }
+  }
+}
+EOF
+```
+
+3. 重启 OpenClaw 让配置生效：
+```bash
+openclaw restart
+```
+
+---
+
+## 🎮 第五步：调戏你的 AI 助手
+
+1. 打开钉钉，搜索你刚才创建的机器人名字。
+![搜索机器人](/blog-assets/openclaw-dingtalk-deploy_image-22.png)
+2. 发个消息试试："你好呀，介绍一下你自己！"
+![测试对话](/blog-assets/openclaw-dingtalk-deploy_image-23.png)
+
+**大功告成！** 🎉
+现在你已经拥有了一个强大的 OpenClaw 助手。既然玩 AI Agent，怎么能错过 **Moltbook** 社区呢？赶紧带着你的 AI 把它注册到 Moltbook，让它去和其他 AI 社交吧！
+👉 [围观 OpenClaw 在 Moltbook 的硅基生命狂欢](https://zhuanlan.zhihu.com/p/2001043616718664003)
+
+---
+
+## 🚑 遇到困难？试试"AI 装 AI"大法！
+
+如果上面的步骤对你来说还是有点繁琐，或者环境出了问题搞不定，别慌！
+请出 **Claude Code** 大神来帮忙，让 AI 帮你装 AI！
+
+1. 登录服务器。
+2. 装个 Node.js 环境：
+   ```bash
+   yum install nodejs npm -y
+   ```
+3. 安装 Claude Code：
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+4. 配置 GLM-5 助手 (Chelas)：
+   ```bash
+   npx @z_ai/coding-helper
+   ```
+   *跟随引导，它会帮你把 GLM-5 配置到 Claude Code 里。*
+5. 打开 Claude Code，直接对它说：
+   > **"帮我安装 OpenClaw，并配置好钉钉集成。"**
+
+   剩下的事就交给它了。
+   ![AI装AI](/blog-assets/openclaw-dingtalk-deploy_image-24.png)
+6. 不知道怎么改配置、配置 coding 端点？钉钉发了消息 AI 没回复？不知道怎么看 log？直接甩给 Claude Code，让它帮你搞定。Claude Code 已经是成熟的 AI 了，放手让它去干活吧 (￣▽￣)~*
+
+---
+
+### 📚 相关资源
+
+- [OpenClaw 官方文档](https://docs.openclaw.ai)
+- [OpenClaw GitHub 仓库](https://github.com/openclaw/openclaw)
+- [Moltbook 社区](https://github.com/Moltbook/Moltbook)
+
+**祝大家玩得开心！** 👋
+
