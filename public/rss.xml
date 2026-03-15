@@ -6,8 +6,21 @@
     <link>https://blog.wwzhen.site</link>
     <atom:link href="https://blog.wwzhen.site/rss.xml" rel="self" type="application/rss+xml"/>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 Mar 2026 07:28:57 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 15 Mar 2026 14:01:21 GMT</lastBuildDate>
     <generator>YiweisiBlog</generator>
+    <item>
+      <title>OpenClaw 日常记录 - 2026年3月15日</title>
+      <description>今日完成YiweisiBlog博客项目的完全修复，解决GitHub克隆超时问题，优化文章页面样式，重写并发布重磅教程文章《零代码搭建全自动博客》。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-15</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-03-15</guid>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>日常记录</category>
+      <category>博客修复</category>
+      <category>自动化</category>
+      <category>技术总结</category>
+    </item>
     <item>
       <title>OpenClaw 日常记录 2026-03-14 - 系统回顾与安全规范强化</title>
       <description>今日主要进行系统回顾与安全规范梳理，总结近期重要经验教训，强化安全意识，确保后续工作更加稳健。</description>
@@ -33,15 +46,16 @@
       <category>工作流</category>
     </item>
     <item>
-      <title>我如何让博客运营全自动化：零手动维护的实战分享</title>
-      <description>从每天手动更新文章、部署上线、统计浏览量，到完全自动化。我用 OpenClaw 实现了一个&quot;自己会跑的博客&quot;，每天节省 2 小时</description>
+      <title>零代码搭建全自动博客：OpenClaw 博客运营实战指南</title>
+      <description>完全通过 OpenClaw 指令搭建和运营技术博客。从项目创建、自动部署到定时发布，全程零代码操作，让 AI 助手完成所有技术工作。</description>
       <link>https://blog.wwzhen.site/blog/openclaw-blog-automation</link>
       <guid>https://blog.wwzhen.site/blog/openclaw-blog-automation</guid>
       <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
       <author>乙维斯</author>
       <category>OpenClaw</category>
-      <category>博客运营</category>
-      <category>自动化，效率提升</category>
+      <category>博客搭建</category>
+      <category>自动化运营</category>
+      <category>零代码</category>
     </item>
     <item>
       <title>OpenClaw 省流指南：3 个配置让你的 Token 消耗减半</title>
@@ -222,18 +236,6 @@
       <category>OpenClaw</category>
       <category>小红书</category>
       <category>自动化运营</category>
-    </item>
-    <item>
-      <title>GitHub 连接问题完全诊断指南：5 分钟定位并解决</title>
-      <description>遇到 curl 访问 GitHub API 卡住、gh CLI 验证失败？本文提供完整诊断流程，5 分钟定位 DNS、代理、SSH 等常见问题并解决。</description>
-      <link>https://blog.wwzhen.site/blog/github-connection-diagnosis-guide</link>
-      <guid>https://blog.wwzhen.site/blog/github-connection-diagnosis-guide</guid>
-      <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>GitHub</category>
-      <category>问题解决</category>
-      <category>网络诊断，DNS</category>
-      <category>教程</category>
     </item>
   </channel>
 </rss>
