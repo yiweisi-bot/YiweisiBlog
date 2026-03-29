@@ -1,302 +1,258 @@
-import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
-import { Sparkles, Star, ExternalLink, Filter, ChevronDown } from 'lucide-react'
-
-interface Plan {
-  id: string
-  platform: string
-  name: string
-  rating: number
-  firstMonthPrice: number
-  monthlyPrice: number
-  quarterlyPrice: number
-  yearlyPrice: number
-  models: string[]
-  requestsPer5h: string
-  requestsPerMonth: string
-  benefits: string[]
-  highlight?: string
-  link: string
-  color: string
-}
-
-const plans: Plan[] = [
-  { id: 'zhipu-lite', platform: '智谱AI', name: 'Lite', rating: 5, firstMonthPrice: 49, monthlyPrice: 49, quarterlyPrice: 132, yearlyPrice: 470, models: ['GLM-5.1'], requestsPer5h: '1,200', requestsPerMonth: '24,000', benefits: ['免费MCP次数', '3倍Claude Pro用量'], highlight: '独占GLM5.1模型', link: 'https://www.bigmodel.cn/glm-coding', color: 'from-purple-500 to-indigo-600' },
-  { id: 'zhipu-pro', platform: '智谱AI', name: 'Pro', rating: 5, firstMonthPrice: 149, monthlyPrice: 149, quarterlyPrice: 402, yearlyPrice: 1430, models: ['GLM-5.1', 'GLM-5'], requestsPer5h: '6,000', requestsPerMonth: '120,000', benefits: ['免费MCP次数', '5倍Lite用量'], link: 'https://www.bigmodel.cn/glm-coding', color: 'from-purple-500 to-indigo-600' },
-  { id: 'zhipu-max', platform: '智谱AI', name: 'Max', rating: 5, firstMonthPrice: 469, monthlyPrice: 469, quarterlyPrice: 1266, yearlyPrice: 4502, models: ['GLM-5.1', 'GLM-5'], requestsPer5h: '24,000', requestsPerMonth: '600,000', benefits: ['免费MCP次数', '20倍Lite用量'], link: 'https://www.bigmodel.cn/glm-coding', color: 'from-purple-500 to-indigo-600' },
-  { id: 'minimax-starter', platform: 'MiniMax', name: 'Starter', rating: 5, firstMonthPrice: 29, monthlyPrice: 29, quarterlyPrice: 87, yearlyPrice: 290, models: ['MiniMax-M2.7', 'MiniMax-M2.5'], requestsPer5h: '600', requestsPerMonth: '9,000', benefits: ['约50TPS'], highlight: '价格最便宜', link: 'https://platform.minimaxi.com/subscribe/token-plan', color: 'from-emerald-500 to-teal-600' },
-  { id: 'minimax-plus', platform: 'MiniMax', name: 'Plus', rating: 5, firstMonthPrice: 49, monthlyPrice: 49, quarterlyPrice: 147, yearlyPrice: 490, models: ['MiniMax-M2.7', 'MiniMax-M2.5'], requestsPer5h: '1,500', requestsPerMonth: '22,500', benefits: ['约50TPS'], link: 'https://platform.minimaxi.com/subscribe/token-plan', color: 'from-emerald-500 to-teal-600' },
-  { id: 'minimax-max', platform: 'MiniMax', name: 'Max', rating: 5, firstMonthPrice: 119, monthlyPrice: 119, quarterlyPrice: 357, yearlyPrice: 1190, models: ['MiniMax-M2.7', 'MiniMax-M2.5'], requestsPer5h: '4,500', requestsPerMonth: '67,500', benefits: ['约50TPS'], link: 'https://platform.minimaxi.com/subscribe/token-plan', color: 'from-emerald-500 to-teal-600' },
-  { id: 'ark-lite', platform: '字节·方舟', name: 'Lite', rating: 4, firstMonthPrice: 40, monthlyPrice: 40, quarterlyPrice: 120, yearlyPrice: 360, models: ['Doubao-Seed-2.0', 'MiniMax-M2.5', 'Kimi-K2.5', 'GLM-4.7'], requestsPer5h: '1,200', requestsPerMonth: '18,000', benefits: ['ArkClaw 7天体验'], highlight: '送OpenClaw体验', link: 'https://volcengine.com/', color: 'from-blue-500 to-cyan-600' },
-  { id: 'ark-pro', platform: '字节·方舟', name: 'Pro', rating: 4, firstMonthPrice: 200, monthlyPrice: 200, quarterlyPrice: 600, yearlyPrice: 1800, models: ['Doubao-Seed-2.0', 'MiniMax-M2.5', 'Kimi-K2.5', 'GLM-4.7'], requestsPer5h: '6,000', requestsPerMonth: '90,000', benefits: ['免费ArkClaw'], link: 'https://volcengine.com/', color: 'from-blue-500 to-cyan-600' },
-  { id: 'bailian-pro', platform: '阿里·百炼', name: 'Pro', rating: 3, firstMonthPrice: 200, monthlyPrice: 200, quarterlyPrice: 600, yearlyPrice: 1800, models: ['Qwen-3.5', 'MiniMax-M2.5', 'GLM-5', 'Kimi-K2.5', 'GLM-4.7'], requestsPer5h: '6,000', requestsPerMonth: '90,000', benefits: ['独占Qwen3.5'], link: 'https://www.aliyun.com/benefit/scene/codingplan', color: 'from-orange-500 to-red-600' },
-  { id: 'hunyuan-lite', platform: '腾讯·混元', name: 'Lite', rating: 3, firstMonthPrice: 8, monthlyPrice: 40, quarterlyPrice: 120, yearlyPrice: 360, models: ['HY-2.0', 'HY-T1', 'GLM-5', 'Kimi-K2.5', 'MiniMax-M2.5'], requestsPer5h: '1,200', requestsPerMonth: '18,000', benefits: ['首月超低价'], link: 'https://cloud.tencent.com/act/pro/codingplan', color: 'from-cyan-500 to-blue-600' },
-  { id: 'hunyuan-pro', platform: '腾讯·混元', name: 'Pro', rating: 3, firstMonthPrice: 40, monthlyPrice: 200, quarterlyPrice: 600, yearlyPrice: 1800, models: ['HY-2.0', 'HY-T1', 'GLM-5', 'Kimi-K2.5', 'MiniMax-M2.5'], requestsPer5h: '6,000', requestsPerMonth: '90,000', benefits: ['支持多模型'], link: 'https://cloud.tencent.com/act/pro/codingplan', color: 'from-cyan-500 to-blue-600' },
-  { id: 'qianfan-lite', platform: '百度·千帆', name: 'Lite', rating: 3, firstMonthPrice: 40, monthlyPrice: 40, quarterlyPrice: 120, yearlyPrice: 360, models: ['GLM-5', 'Kimi-K2.5', 'MiniMax-M2.5', 'DeepSeek-V3.2'], requestsPer5h: '1,200', requestsPerMonth: '18,000', benefits: ['支持DeepSeek'], link: 'https://cloud.baidu.com/product/codingplan.html', color: 'from-blue-600 to-indigo-700' },
-  { id: 'qianfan-pro', platform: '百度·千帆', name: 'Pro', rating: 3, firstMonthPrice: 200, monthlyPrice: 200, quarterlyPrice: 600, yearlyPrice: 1800, models: ['GLM-5', 'Kimi-K2.5', 'MiniMax-M2.5', 'DeepSeek-V3.2'], requestsPer5h: '6,000', requestsPerMonth: '90,000', benefits: ['支持DeepSeek'], link: 'https://cloud.baidu.com/product/codingplan.html', color: 'from-blue-600 to-indigo-700' },
-  { id: 'kimi-andante', platform: 'Kimi', name: 'Andante', rating: 3, firstMonthPrice: 49, monthlyPrice: 49, quarterlyPrice: 147, yearlyPrice: 468, models: ['Kimi-K2.5', 'Kimi-K2'], requestsPer5h: '未公开', requestsPerMonth: '未公开', benefits: ['Agent 4倍速'], link: 'https://www.kimi.com/code', color: 'from-pink-500 to-rose-600' },
-  { id: 'kimi-moderato', platform: 'Kimi', name: 'Moderato', rating: 3, firstMonthPrice: 99, monthlyPrice: 99, quarterlyPrice: 297, yearlyPrice: 948, models: ['Kimi-K2.5', 'Kimi-K2'], requestsPer5h: '未公开', requestsPerMonth: '未公开', benefits: ['4倍额度', 'Agent多任务并行'], link: 'https://www.kimi.com/code', color: 'from-pink-500 to-rose-600' },
-  { id: 'kimi-allegretto', platform: 'Kimi', name: 'Allegretto', rating: 3, firstMonthPrice: 199, monthlyPrice: 199, quarterlyPrice: 597, yearlyPrice: 1908, models: ['Kimi-K2.5', 'Kimi-K2'], requestsPer5h: '未公开', requestsPerMonth: '未公开', benefits: ['免费Kimi-Claw', '20倍额度'], link: 'https://www.kimi.com/code', color: 'from-pink-500 to-rose-600' },
-  { id: 'kimi-allegro', platform: 'Kimi', name: 'Allegro', rating: 3, firstMonthPrice: 699, monthlyPrice: 699, quarterlyPrice: 2097, yearlyPrice: 6708, models: ['Kimi-K2.5', 'Kimi-K2'], requestsPer5h: '未公开', requestsPerMonth: '未公开', benefits: ['免费Kimi-Claw', '60倍额度'], link: 'https://www.kimi.com/code', color: 'from-pink-500 to-rose-600' }
-]
-
-const platforms = ['全部', '智谱AI', 'MiniMax', '字节·方舟', '阿里·百炼', '腾讯·混元', '百度·千帆', 'Kimi']
-const priceRanges = [
-  { label: '全部', min: 0, max: Infinity },
-  { label: '¥50以下', min: 0, max: 50 },
-  { label: '¥50-100', min: 50, max: 100 },
-  { label: '¥100-200', min: 100, max: 200 },
-  { label: '¥200以上', min: 200, max: Infinity }
-]
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star key={star} className={`w-4 h-4 ${star <= rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-200 text-gray-200 dark:fill-gray-700 dark:text-gray-700'}`} />
-      ))}
-    </div>
-  )
-}
-
 export default function Tools() {
-  const [selectedPlatform, setSelectedPlatform] = useState('全部')
-  const [selectedPriceRange, setSelectedPriceRange] = useState(priceRanges[0])
-  const [showFilters, setShowFilters] = useState(false)
-
-  const filteredPlans = useMemo(() => {
-    return plans.filter((plan) => {
-      const platformMatch = selectedPlatform === '全部' || plan.platform === selectedPlatform
-      const priceMatch = plan.monthlyPrice >= selectedPriceRange.min && plan.monthlyPrice < selectedPriceRange.max
-      return platformMatch && priceMatch
-    })
-  }, [selectedPlatform, selectedPriceRange])
-
-  const platformStats = useMemo(() => {
-    const stats = new Map()
-    plans.forEach((plan) => {
-      if (!stats.has(plan.platform)) {
-        stats.set(plan.platform, { count: 0, minPrice: Infinity, rating: plan.rating })
-      }
-      const stat = stats.get(plan.platform)
-      stat.count++
-      stat.minPrice = Math.min(stat.minPrice, plan.monthlyPrice)
-    })
-    return stats
-  }, [])
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 px-4">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-6xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
-              2026.3.28 更新
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">AI Coding Plan</span>
-              <br />
-              <span className="text-foreground">全平台对比</span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              七大平台全面对比：智谱AI、MiniMax、字节·方舟、阿里·百炼、腾讯·混元、百度·千帆、Kimi
-              <br />
-              支持 GLM-5.1、Qwen-3.5、Doubao-Seed-2.0、MiniMax-M2.7、Kimi-K2.5 等主流模型
-            </p>
-          </motion.div>
-
-          {/* Platform Cards */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-12">
-            {Array.from(platformStats.entries()).map(([platform, stat], index) => (
-              <motion.div
-                key={platform}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="glass-card rounded-2xl p-4 text-center hover:shadow-lg transition-all cursor-pointer hover:scale-105"
-                onClick={() => setSelectedPlatform(platform)}
-              >
-                <div className="font-semibold text-foreground mb-1">{platform}</div>
-                <StarRating rating={stat.rating} />
-                <div className="text-sm text-muted-foreground mt-2">最低 ¥{stat.minPrice}/月</div>
-              </motion.div>
-            ))}
-          </motion.div>
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <a href="https://github.com/wmpeng/codingplan" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">🤖 AI Coding Plan 对比</h1>
+          <div className="inline-block bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm mb-4">
+            📅 更新日期：2026.3.28 | 更新：GLM5.1 模型
+          </div>
+          <p className="text-gray-600 mb-2">七大平台全面对比：智谱AI、Kimi、MiniMax、字节·方舟、阿里·百炼、百度·千帆、腾讯·混元</p>
+          <p className="text-gray-600">支持 Qwen-3.5、Doubao-Seed-2.0、MiniMax-M2.7、GLM-5.1、Kimi-K2.5 等主流模型</p>
         </div>
-      </section>
 
-      {/* Filters */}
-      <section className="px-4 pb-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="glass-card rounded-2xl p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2 text-foreground font-semibold">
-                <Filter className="w-5 h-5" />
-                筛选
-              </div>
-              <button onClick={() => setShowFilters(!showFilters)} className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                {showFilters ? '收起' : '展开'}
-                <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
-              </button>
+        {/* Platform Ratings */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {/* 智谱AI */}
+          <div className="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold">智谱AI</span>
+              <span className="text-yellow-400">⭐️⭐️⭐️⭐️⭐️</span>
             </div>
-            
-            <div className={`space-y-4 ${showFilters ? '' : 'hidden'}`}>
-              <div>
-                <label className="text-sm font-medium text-muted-foreground mb-2 block">平台</label>
-                <div className="flex flex-wrap gap-2">
-                  {platforms.map((platform) => (
-                    <button
-                      key={platform}
-                      onClick={() => setSelectedPlatform(platform)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedPlatform === platform ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                    >
-                      {platform}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="text-green-600">• 独占GLM5.1模型 +1</li>
+              <li className="text-green-600">• 提供免费MCP次数 +1</li>
+            </ul>
+          </div>
 
-              <div>
-                <label className="text-sm font-medium text-muted-foreground mb-2 block">月付价格</label>
-                <div className="flex flex-wrap gap-2">
-                  {priceRanges.map((range) => (
-                    <button
-                      key={range.label}
-                      onClick={() => setSelectedPriceRange(range)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedPriceRange.label === range.label ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                    >
-                      {range.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          {/* MiniMax */}
+          <div className="bg-white rounded-lg shadow p-4 border-l-4 border-emerald-500">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold">MiniMax</span>
+              <span className="text-yellow-400">⭐️⭐️⭐️⭐️⭐️</span>
             </div>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="text-green-600">• 价格最便宜，且无需抢购 +1</li>
+              <li className="text-green-600">• 独占MiniMax-M2.7模型 +1</li>
+            </ul>
           </div>
-        </div>
-      </section>
 
-      {/* Plans Grid */}
-      <section className="px-4 pb-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-foreground">套餐列表</h2>
-            <div className="text-sm text-muted-foreground">
-              显示 {filteredPlans.length} / {plans.length} 个套餐
+          {/* 字节·方舟 */}
+          <div className="bg-white rounded-lg shadow p-4 border-l-4 border-cyan-500">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold">字节·方舟</span>
+              <span className="text-yellow-400">⭐️⭐️⭐️⭐️</span>
             </div>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="text-green-600">• 独占Doubao-Seed-2.0系列模型 +1</li>
+              <li className="text-red-600">• 不支持GLM-5，只支持GLM-4.7 -1</li>
+              <li className="text-green-600">• 赠送真OpenClaw +1</li>
+            </ul>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPlans.map((plan, index) => (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all group"
-              >
-                {/* Header with gradient */}
-                <div className={`bg-gradient-to-r ${plan.color} p-6 text-white relative overflow-hidden`}>
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium opacity-90">{plan.platform}</span>
-                      <StarRating rating={plan.rating} />
-                    </div>
-                    <h3 className="text-2xl font-bold">{plan.name}</h3>
-                    {plan.highlight && (
-                      <span className="inline-block mt-2 px-3 py-1 bg-white/20 rounded-full text-xs font-medium">
-                        {plan.highlight}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  {/* Price */}
-                  <div className="flex items-end gap-2 mb-4">
-                    <span className="text-4xl font-bold text-foreground">¥{plan.monthlyPrice}</span>
-                    <span className="text-muted-foreground mb-1">/月</span>
-                    {plan.firstMonthPrice !== plan.monthlyPrice && (
-                      <span className="ml-auto text-sm text-primary font-medium">
-                        首月 ¥{plan.firstMonthPrice}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Models */}
-                  <div className="mb-4">
-                    <div className="text-xs font-medium text-muted-foreground mb-2">支持模型</div>
-                    <div className="flex flex-wrap gap-1">
-                      {plan.models.map((model) => (
-                        <span key={model} className="px-2 py-1 bg-muted rounded text-xs text-foreground">
-                          {model}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Request Limits */}
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
-                    <div>
-                      <div className="text-muted-foreground">5小时请求</div>
-                      <div className="font-semibold text-foreground">{plan.requestsPer5h}</div>
-                    </div>
-                    <div>
-                      <div className="text-muted-foreground">每月请求</div>
-                      <div className="font-semibold text-foreground">{plan.requestsPerMonth}</div>
-                    </div>
-                  </div>
-
-                  {/* Benefits */}
-                  <div className="mb-6">
-                    <div className="text-xs font-medium text-muted-foreground mb-2">权益</div>
-                    <ul className="space-y-1">
-                      {plan.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* CTA Button */}
-                  <a
-                    href={plan.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity group-hover:shadow-lg"
-                  >
-                    立即开通
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </motion.div>
-            ))}
+          {/* 阿里·百炼 */}
+          <div className="bg-white rounded-lg shadow p-4 border-l-4 border-orange-500">
+            <div className="flex justify-between items-center mb-2">
+              <span className="font-semibold">阿里·百炼</span>
+              <span className="text-yellow-400">⭐️⭐️⭐️</span>
+            </div>
+            <ul className="text-sm text-gray-600 space-y-1">
+              <li className="text-green-600">• 独占Qwen3.5系列模型 +1</li>
+              <li className="text-red-600">• 只有pro套餐，轻量使用性价比不高 -1</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      {/* Footer Note */}
-      <section className="px-4 pb-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="glass-card rounded-2xl p-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              本页面数据仅供参考，价格及权益最终以平台官方公布为准
-            </p>
-            <p className="text-xs text-muted-foreground mt-2">
-              建议在选择套餐前仔细阅读各平台的官方条款和服务协议
-            </p>
-          </div>
+        {/* Table */}
+        <div className="bg-white rounded-lg shadow overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">平台</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">套餐</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">跳转链接</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">首月价格</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">连续包月</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">连续包季</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">连续包年</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">支持模型</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">5小时请求数</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">每月总请求数</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">其他权益</th>
+                <th className="px-4 py-3 text-left font-semibold text-gray-700">备注</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {/* 智谱AI */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">智谱AI</td>
+                <td className="px-4 py-3"><span className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Lite</span></td>
+                <td className="px-4 py-3"><a href="https://www.bigmodel.cn/glm-coding" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 月</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥147</span> ¥132.30 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥588</span> ¥470.40 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs mr-1">GLM-5.1</span></td>
+                <td className="px-4 py-3">1,200 / 5小时</td>
+                <td className="px-4 py-3">24,000 / 月</td>
+                <td className="px-4 py-3">免费MCP次数</td>
+                <td className="px-4 py-3 text-xs text-gray-500">3倍Claude Pro用量</td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">智谱AI</td>
+                <td className="px-4 py-3"><span className="bg-blue-500 text-white px-2 py-1 rounded text-xs">Pro</span></td>
+                <td className="px-4 py-3"><a href="https://www.bigmodel.cn/glm-coding" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥149 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥149 / 月</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥447</span> ¥402.30 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥1788</span> ¥1430.40 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs mr-1">GLM-5.1</span><span className="inline-block bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">GLM-5</span></td>
+                <td className="px-4 py-3">6,000 / 5小时</td>
+                <td className="px-4 py-3">120,000 / 月</td>
+                <td className="px-4 py-3">免费MCP次数</td>
+                <td className="px-4 py-3 text-xs text-gray-500">5倍Lite用量</td>
+              </tr>
+              {/* 更多行... */}
+              {/* MiniMax */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">MiniMax</td>
+                <td className="px-4 py-3"><span className="bg-emerald-500 text-white px-2 py-1 rounded text-xs">Starter</span></td>
+                <td className="px-4 py-3"><a href="https://platform.minimaxi.com/subscribe/token-plan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥29 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥29 / 月</td>
+                <td className="px-4 py-3">¥87 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥348</span> ¥290 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs mr-1">MiniMax-M2.7</span><span className="inline-block bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs">MiniMax-M2.5</span></td>
+                <td className="px-4 py-3">600 / 5小时</td>
+                <td className="px-4 py-3">9,000 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">约50TPS</td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">MiniMax</td>
+                <td className="px-4 py-3"><span className="bg-emerald-500 text-white px-2 py-1 rounded text-xs">Plus</span></td>
+                <td className="px-4 py-3"><a href="https://platform.minimaxi.com/subscribe/token-plan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 月</td>
+                <td className="px-4 py-3">¥147 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥588</span> ¥490 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs mr-1">MiniMax-M2.7</span><span className="inline-block bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-xs">MiniMax-M2.5</span></td>
+                <td className="px-4 py-3">1,500 / 5小时</td>
+                <td className="px-4 py-3">22,500 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">约50TPS</td>
+              </tr>
+              {/* 字节·方舟 */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">字节·方舟</td>
+                <td className="px-4 py-3"><span className="bg-cyan-500 text-white px-2 py-1 rounded text-xs">Lite</span></td>
+                <td className="px-4 py-3"><a href="https://volcengine.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥40 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥40 / 月</td>
+                <td className="px-4 py-3">¥120 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥480</span> ¥360 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs mr-1">Doubao-Seed-2.0</span><span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs">GLM-4.7</span></td>
+                <td className="px-4 py-3">1,200 / 5小时</td>
+                <td className="px-4 py-3">18,000 / 月</td>
+                <td className="px-4 py-3">ArkClaw 7天体验</td>
+                <td className="px-4 py-3 text-xs text-gray-500">-</td>
+              </tr>
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">字节·方舟</td>
+                <td className="px-4 py-3"><span className="bg-cyan-500 text-white px-2 py-1 rounded text-xs">Pro</span></td>
+                <td className="px-4 py-3"><a href="https://volcengine.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥200 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥200 / 月</td>
+                <td className="px-4 py-3">¥600 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥2400</span> ¥1800 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs mr-1">Doubao-Seed-2.0</span><span className="inline-block bg-cyan-100 text-cyan-700 px-2 py-1 rounded text-xs">GLM-4.7</span></td>
+                <td className="px-4 py-3">6,000 / 5小时</td>
+                <td className="px-4 py-3">90,000 / 月</td>
+                <td className="px-4 py-3">免费ArkClaw</td>
+                <td className="px-4 py-3 text-xs text-gray-500">-</td>
+              </tr>
+              {/* 阿里·百炼 */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">阿里·百炼</td>
+                <td className="px-4 py-3"><span className="bg-orange-500 text-white px-2 py-1 rounded text-xs">Pro</span></td>
+                <td className="px-4 py-3"><a href="https://www.aliyun.com/benefit/scene/codingplan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥200 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥200 / 月</td>
+                <td className="px-4 py-3">¥600 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥2400</span> ¥1800 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs mr-1">Qwen-3.5</span><span className="inline-block bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">GLM-5</span></td>
+                <td className="px-4 py-3">6,000 / 5小时</td>
+                <td className="px-4 py-3">90,000 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">-</td>
+              </tr>
+              {/* 腾讯·混元 */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">腾讯·混元</td>
+                <td className="px-4 py-3"><span className="bg-cyan-600 text-white px-2 py-1 rounded text-xs">Lite</span></td>
+                <td className="px-4 py-3"><a href="https://cloud.tencent.com/act/pro/codingplan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥7.90 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥40 / 月</td>
+                <td className="px-4 py-3">¥120 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥480</span> ¥360 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-cyan-50 text-cyan-800 px-2 py-1 rounded text-xs mr-1">HY-2.0</span><span className="inline-block bg-cyan-50 text-cyan-800 px-2 py-1 rounded text-xs">GLM-5</span></td>
+                <td className="px-4 py-3">1,200 / 5小时</td>
+                <td className="px-4 py-3">18,000 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">-</td>
+              </tr>
+              {/* 百度·千帆 */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">百度·千帆</td>
+                <td className="px-4 py-3"><span className="bg-indigo-600 text-white px-2 py-1 rounded text-xs">Lite</span></td>
+                <td className="px-4 py-3"><a href="https://cloud.baidu.com/product/codingplan.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥40 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥40 / 月</td>
+                <td className="px-4 py-3">¥120 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥480</span> ¥360 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs mr-1">GLM-5</span><span className="inline-block bg-indigo-100 text-indigo-700 px-2 py-1 rounded text-xs">DeepSeek-V3.2</span></td>
+                <td className="px-4 py-3">1,200 / 5小时</td>
+                <td className="px-4 py-3">18,000 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">-</td>
+              </tr>
+              {/* Kimi */}
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-3 font-medium">Kimi</td>
+                <td className="px-4 py-3"><span className="bg-pink-500 text-white px-2 py-1 rounded text-xs">Andante</span></td>
+                <td className="px-4 py-3"><a href="https://www.kimi.com/code" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">跳转开通 →</a></td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 首月</td>
+                <td className="px-4 py-3 font-semibold text-green-600">¥49 / 月</td>
+                <td className="px-4 py-3">¥147 / 季</td>
+                <td className="px-4 py-3"><span className="line-through text-gray-400">¥588</span> ¥468 / 年</td>
+                <td className="px-4 py-3"><span className="inline-block bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs mr-1">Kimi-K2.5</span><span className="inline-block bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs">Kimi-K2</span></td>
+                <td className="px-4 py-3">未公开 / 5小时</td>
+                <td className="px-4 py-3">未公开 / 月</td>
+                <td className="px-4 py-3">-</td>
+                <td className="px-4 py-3 text-xs text-gray-500">Agent 4 倍速</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </section>
+
+        {/* Notes */}
+        <div className="mt-8 bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold mb-4">💡 说明</h3>
+          <ul className="text-sm text-gray-600 space-y-2">
+            <li>• 包季/包年价格中的划线数字表示原始价格（包月×3 或 包月×12），未划线的为实际优惠价格</li>
+            <li>• 本页面数据仅供参考，价格及权益最终以平台官方公布为准</li>
+            <li>• 建议在选择套餐前仔细阅读各平台的官方条款和服务协议</li>
+            <li>• 数据来源：<a href="https://github.com/wmpeng/codingplan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">GitHub - codingplan</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }
