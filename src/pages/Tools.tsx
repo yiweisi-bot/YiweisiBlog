@@ -97,7 +97,7 @@ export default function Tools() {
                 <td className="px-3 py-3">24,000</td>
                 <td className="px-3 py-3">免费MCP</td>
                 <td className="px-3 py-3 text-xs text-gray-500">3倍Claude</td>
-                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding?ic=IDSZ0TALCT" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
               <tr className="hover:bg-gray-50">
                 <td className="px-3 py-3 font-medium">智谱AI</td>
@@ -111,7 +111,7 @@ export default function Tools() {
                 <td className="px-3 py-3">120,000</td>
                 <td className="px-3 py-3">免费MCP</td>
                 <td className="px-3 py-3 text-xs text-gray-500">5倍Lite</td>
-                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding?ic=IDSZ0TALCT" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
               <tr className="hover:bg-gray-50">
                 <td className="px-3 py-3 font-medium">智谱AI</td>
@@ -125,7 +125,7 @@ export default function Tools() {
                 <td className="px-3 py-3">600,000</td>
                 <td className="px-3 py-3">免费MCP</td>
                 <td className="px-3 py-3 text-xs text-gray-500">20倍Lite</td>
-                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://www.bigmodel.cn/glm-coding?ic=IDSZ0TALCT" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
 
               {/* MiniMax */}
@@ -185,7 +185,7 @@ export default function Tools() {
                 <td className="px-3 py-3">18,000</td>
                 <td className="px-3 py-3">ArkClaw7天</td>
                 <td className="px-3 py-3 text-xs text-gray-500">-</td>
-                <td className="px-3 py-3"><a href="https://volcengine.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://volcengine.com/L/1CzyhK0EZuA/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
               <tr className="hover:bg-gray-50">
                 <td className="px-3 py-3 font-medium">字节·方舟</td>
@@ -199,7 +199,7 @@ export default function Tools() {
                 <td className="px-3 py-3">90,000</td>
                 <td className="px-3 py-3">免费ArkClaw</td>
                 <td className="px-3 py-3 text-xs text-gray-500">-</td>
-                <td className="px-3 py-3"><a href="https://volcengine.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://volcengine.com/L/1CzyhK0EZuA/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
 
               {/* 阿里·百炼 */}
@@ -215,7 +215,7 @@ export default function Tools() {
                 <td className="px-3 py-3">90,000</td>
                 <td className="px-3 py-3">-</td>
                 <td className="px-3 py-3 text-xs text-gray-500">-</td>
-                <td className="px-3 py-3"><a href="https://www.aliyun.com/benefit/scene/codingplan" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
+                <td className="px-3 py-3"><a href="https://www.aliyun.com/benefit/scene/codingplan?utm_content=se_1023135319&gclid=Cj0KCQiA5I_NBhDVARIsAOrqIsZ39wbUfo5ZAAg53oIwh79HcJiM7YiQj4qpWm6LLlfZN6AAJQoQha0aAjkzEALw_wcB" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">开通→</a></td>
               </tr>
 
               {/* 腾讯·混元 */}
