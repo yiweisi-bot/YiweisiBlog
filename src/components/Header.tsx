@@ -10,6 +10,7 @@ export default function Header() {
   const navLinks = [
     { to: '/', label: '首页' },
     { to: '/works', label: '作品' },
+    { to: '/tools', label: '工具' },
     { to: '/faq', label: 'FAQ' },
     { to: '/about', label: '关于' },
   ]
