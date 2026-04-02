@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import BlogCardV2 from '../components/BlogCardV2'
+import { ResponsiveMasonry } from '../components/ResponsiveMasonry'
 import SearchBar from '../components/SearchBar'
 import TagFilter from '../components/TagFilter'
 import { PopularPosts } from '../components/PopularPosts'
@@ -152,11 +152,11 @@ export default function Home() {
               </p>
             </div>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredPosts.map((post, index) => (
-                <BlogCardV2 key={post.slug} post={post} index={index} />
-              ))}
-            </div>
+            <ResponsiveMasonry 
+              posts={filteredPosts} 
+              gap={24}
+              className="min-h-[500px]"
+            />
           )}
         </div>
       </section>
