@@ -5,7 +5,6 @@ import { getBlogPostBySlug, getAllBlogPosts } from '../lib/blog'
 import { formatDate } from '../lib/markdown'
 import { ArticleViews } from '../components/ArticleViews'
 import { autoRecordView } from '../lib/analytics'
-import { OrbitalHeader } from '../components/OrbitalHeader'
 import { ReadingProgress } from '../components/ReadingProgress'
 
 export default function BlogPost() {
@@ -158,13 +157,9 @@ export default function BlogPost() {
               返回首页
             </Link>
 
-            {/* 轨道光球标题 */}
-            <OrbitalHeader
-              title={post.title}
-              subtitle={post.excerpt}
-              author={post.author}
-              date={formatDate(post.date)}
-            />
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {post.title}
+            </h1>
 
             {post.excerpt && (
               <p className="mb-6 text-lg text-muted-foreground border-l-4 border-primary pl-4">
