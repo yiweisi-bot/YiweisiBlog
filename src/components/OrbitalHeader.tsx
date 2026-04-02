@@ -87,6 +87,10 @@ export function OrbitalHeader({ title, subtitle, author, date }: OrbitalHeaderPr
         <motion.div
           key={index}
           className="absolute rounded-full blur-xl"
+          initial={{
+            x: orbit.x - orbit.r,
+            y: orbit.y - orbit.r,
+          }}
           style={{
             width: orbit.r * 2,
             height: orbit.r * 2,
