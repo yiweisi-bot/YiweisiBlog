@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { useTextHeight } from '../hooks/useTextHeight'
 import { useSmartTruncate } from '../hooks/useSmartTruncate'
@@ -132,6 +133,7 @@ export default function BlogCardUltimate({ post, index = 0 }: BlogCardUltimatePr
       />
 
       {/* 卡片主体 */}
+      <Link to={`/blog/${post.slug}`} className="block relative h-full">
       <article className="relative h-full flex flex-col overflow-hidden rounded-2xl border border-border bg-card/80 backdrop-blur-sm cursor-pointer transition-all duration-300 group-hover:border-transparent group-hover:bg-card/90 group-hover:shadow-2xl group-hover:shadow-primary/10">
         
         {/* 顶部渐变条 */}
@@ -220,6 +222,7 @@ export default function BlogCardUltimate({ post, index = 0 }: BlogCardUltimatePr
           }}
         />
       </article>
+      </Link>
     </motion.div>
   )
 }
