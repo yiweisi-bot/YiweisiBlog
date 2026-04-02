@@ -95,17 +95,30 @@ export function OrbitalHeader({ title, subtitle, author, date }: OrbitalHeaderPr
             width: orbit.r * 2,
             height: orbit.r * 2,
             background: `radial-gradient(circle, ${[
-              'rgba(59, 130, 246, 0.6)',
-              'rgba(139, 92, 246, 0.6)',
-              'rgba(236, 72, 153, 0.6)'
-            ][index]} 0%, transparent 70%)`,
+              'rgba(59, 130, 246, 0.7)',
+              'rgba(139, 92, 246, 0.7)',
+              'rgba(236, 72, 153, 0.7)'
+            ][index]} 0%, transparent 60%)`,
           }}
           animate={{
-            x: [orbit.x - orbit.r, orbit.x - orbit.r + 100, orbit.x - orbit.r],
-            y: [orbit.y - orbit.r, orbit.y - orbit.r - 50, orbit.y - orbit.r],
+            x: [
+              orbit.x - orbit.r,
+              orbit.x - orbit.r + 200,
+              orbit.x - orbit.r + 100,
+              orbit.x - orbit.r - 100,
+              orbit.x - orbit.r
+            ],
+            y: [
+              orbit.y - orbit.r,
+              orbit.y - orbit.r - 150,
+              orbit.y - orbit.r + 100,
+              orbit.y - orbit.r - 50,
+              orbit.y - orbit.r
+            ],
+            scale: [1, 1.2, 0.9, 1.1, 1],
           }}
           transition={{
-            duration: 10 / orbit.speed,
+            duration: 15 / orbit.speed,
             repeat: Infinity,
             ease: "easeInOut",
           }}
