@@ -25,6 +25,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://blog.wwzhen.site/blog/openclaw-daily-2026-04-02</loc>
+    <lastmod>2026-04-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://blog.wwzhen.site/blog/openclaw-blog-automation</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>

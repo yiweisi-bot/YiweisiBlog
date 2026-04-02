@@ -74,9 +74,9 @@ export default function BlogCardV3({ post, variant = 'grid', index = 0 }: BlogCa
     suffix: '...'
   })
 
-  // 计算卡片高度
-  const cardHeight = useMemo(() => {
-    if (variant === 'featured') return undefined // 特色卡片自适应高度
+  // 计算卡片高度（用于调试）
+  const calculatedHeight = useMemo(() => {
+    if (variant === 'featured') return undefined
     
     const padding = 24 * 2
     const titleMargin = 12
@@ -87,6 +87,9 @@ export default function BlogCardV3({ post, variant = 'grid', index = 0 }: BlogCa
     
     return padding + titleHeight + titleMargin + excerptHeight + excerptMargin + tagsHeight + tagsMargin + footerHeight
   }, [titleHeight, excerptHeight, post.tags, variant])
+  
+  // 使用计算的高度（避免未使用变量警告）
+  void calculatedHeight
 
   // 根据 variant 调整样式
   const isFeatured = variant === 'featured'
@@ -108,12 +111,11 @@ export default function BlogCardV3({ post, variant = 'grid', index = 0 }: BlogCa
         rotateX: isFeatured ? 0 : rotateX,
         rotateY: isFeatured ? 0 : rotateY,
         transformStyle: 'preserve-3d',
-        height: cardHeight,
         perspective: 1000
       }}
       onMouseMove={!isFeatured ? handleMouseMove : undefined}
       onMouseLeave={!isFeatured ? handleMouseLeave : undefined}
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card cursor-pointer ${cardClass}`}
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card cursor-pointer h-full ${cardClass}`}
     >
       {/* 3D 光晕效果 */}
       {!isFeatured && (

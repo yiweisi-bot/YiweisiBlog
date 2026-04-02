@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import { ResponsiveMasonry } from '../components/ResponsiveMasonry'
+import { SmartAlignedGrid } from '../components/AlignedGrid'
 import SearchBar from '../components/SearchBar'
 import TagFilter from '../components/TagFilter'
 import { PopularPosts } from '../components/PopularPosts'
@@ -152,7 +152,7 @@ export default function Home() {
               </p>
             </div>
           ) : (
-            <ResponsiveMasonry 
+            <SmartAlignedGrid 
               posts={filteredPosts} 
               gap={24}
               className="min-h-[500px]"
