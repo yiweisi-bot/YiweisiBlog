@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { prepare, layout } from '@chenglou/pretext'
-import BlogCardV3 from './BlogCardV3'
+import BlogCardUltimate from './BlogCardUltimate'
 import type { BlogPost } from '../types'
 
 interface AlignedGridProps {
@@ -74,7 +74,7 @@ export function AlignedGrid({
             ease: [0.25, 0.1, 0.25, 1]
           }}
         >
-          <BlogCardV3 post={post} index={index} />
+          <BlogCardUltimate post={post} index={index} />
         </motion.div>
       ))}
     </div>
@@ -115,7 +115,7 @@ export function FixedHeightGrid({
           className="h-full"
         >
           <div className="h-full">
-            <BlogCardV3 post={post} index={index} />
+            <BlogCardUltimate post={post} index={index} />
           </div>
         </motion.div>
       ))}
@@ -172,7 +172,7 @@ export function SmartAlignedGrid({
                 }}
                 className="h-full"
               >
-                <BlogCardV3 post={post} index={index} />
+                <BlogCardUltimate post={post} index={index} />
               </motion.div>
             )
           })}
