@@ -9,6 +9,7 @@ import Works from './pages/Works'
 import FAQ from './pages/FAQ'
 import Tools from './pages/Tools'
 import NotFound from './pages/NotFound'
+import EffectsDemo from './pages/EffectsDemo'
 import ScrollToTop from './components/ScrollToTop'
 import './style.css'
 
@@ -27,6 +28,7 @@ function App() {
               <Route path="/works" element={<Works />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/tools" element={<Tools />} />
+              <Route path="/effects" element={<EffectsDemo />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
