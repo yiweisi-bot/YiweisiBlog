@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
-import BlogCard from '../components/BlogCard'
+import BlogCardV2 from '../components/BlogCardV2'
 import SearchBar from '../components/SearchBar'
 import TagFilter from '../components/TagFilter'
 import { PopularPosts } from '../components/PopularPosts'
@@ -153,8 +153,8 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
+              {filteredPosts.map((post, index) => (
+                <BlogCardV2 key={post.slug} post={post} index={index} />
               ))}
             </div>
           )}

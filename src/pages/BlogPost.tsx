@@ -5,6 +5,7 @@ import { getBlogPostBySlug, getAllBlogPosts } from '../lib/blog'
 import { formatDate } from '../lib/markdown'
 import { ArticleViews } from '../components/ArticleViews'
 import { autoRecordView } from '../lib/analytics'
+import { ReadingProgress } from '../components/ReadingProgress'
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -138,7 +139,15 @@ export default function BlogPost() {
     <>
       {renderSchemaOrg()}
       
-      <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* 阅读进度条 */}
+      <ReadingProgress 
+        content={post.content || ''} 
+        font="18px Inter"
+        contentWidth={768}
+        lineHeight={28}
+      />
+      
+      <article className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
         <div className="mx-auto max-w-3xl lg:max-w-4xl">
           <header className="mb-8">
             <Link to="/" className="mb-4 inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
