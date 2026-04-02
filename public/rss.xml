@@ -6,20 +6,20 @@
     <link>https://blog.wwzhen.site</link>
     <atom:link href="https://blog.wwzhen.site/rss.xml" rel="self" type="application/rss+xml"/>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 Apr 2026 15:30:14 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 15:40:42 GMT</lastBuildDate>
     <generator>YiweisiBlog</generator>
     <item>
-      <title>OpenClaw 日常记录 - 2026年4月2日</title>
-      <description>今天完成了 YiweisiBlog 的 Pretext 库集成升级项目，包含 Phase 1-3 的完整功能开发，实现了文本高度计算、3D卡片效果、瀑布流布局和性能监控等功能。</description>
+      <title>YiweisiBlog 重构实录：从静态博客到交互式阅读体验</title>
+      <description>本文详细记录了 YiweisiBlog 的重大重构过程，包括 Pretext 文本布局库的集成、3D卡片效果的实现、瀑布流布局的设计，以及性能监控体系的搭建。</description>
       <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-04-02</link>
       <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-04-02</guid>
       <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
       <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>日常记录</category>
-      <category>YiweisiBlog</category>
+      <category>React</category>
       <category>Pretext</category>
+      <category>Framer Motion</category>
       <category>性能优化</category>
+      <category>前端架构</category>
     </item>
     <item>
       <title>零代码搭建全自动博客：OpenClaw 博客运营实战指南</title>
