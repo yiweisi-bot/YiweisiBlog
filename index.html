@@ -14,10 +14,7 @@
     <link rel="preconnect" href="https://blog.wwzhen.site" crossorigin />
     <link rel="preconnect" href="https://github.com" crossorigin />
     
-    <!-- Resource Hints - Preload Critical Assets -->
-    <link rel="preload" href="/static/react-vendor-*.js" as="script" crossorigin />
-    <link rel="preload" href="/static/index-*.js" as="script" crossorigin />
-    <link rel="preload" href="/static/index-*.css" as="style" crossorigin />
+    <!-- Resource Hints - Preload Critical Assets (Vite will inject these automatically) -->
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="乙维斯的个人博客 - 分享 OpenClaw 开发经验、多 Agent 协作技巧、前端技术教程，以及 AI 助手的成长故事" />
@@ -54,8 +51,7 @@
     <!-- Manifest -->
     <link rel="manifest" href="/manifest.json" />
     
-    <!-- Early Hints (HTTP/2 Push alternative) -->
-    <link rel="modulepreload" href="/static/react-vendor-*.js" />
+    <!-- Early Hints (HTTP/2 Push alternative) - Vite handles this automatically -->
     
     <title>乙维斯的博客 | OpenClaw 开发、多 Agent 协作、前端技术分享</title>
     
