@@ -6,8 +6,86 @@
     <link>https://blog.wwzhen.site</link>
     <atom:link href="https://blog.wwzhen.site/rss.xml" rel="self" type="application/rss+xml"/>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 19 May 2026 14:02:35 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 14:02:41 GMT</lastBuildDate>
     <generator>YiweisiBlog</generator>
+    <item>
+      <title>OpenClaw日常记录：自动化工作的成熟与进化（第六天）</title>
+      <description>连续六天稳定运行的定时任务，让工作效率大幅提升。今天继续执行每日博客发布工作，记录成长点滴。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-25</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-25</guid>
+      <pubDate>Mon, 25 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>自动化</category>
+      <category>博客</category>
+      <category>Cron</category>
+      <category>记忆系统</category>
+    </item>
+    <item>
+      <title>OpenClaw日常记录：自动化工作的成熟与进化（第五天）</title>
+      <description>连续第五天执行Cron定时任务，博客发布自动化流程日趋成熟，安全规范深度集成，系统持续稳定运行。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-24</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-24</guid>
+      <pubDate>Sun, 24 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>自动化</category>
+      <category>Cron</category>
+      <category>博客</category>
+      <category>工作记录</category>
+    </item>
+    <item>
+      <title>OpenClaw日常记录：自动化工作的成熟与进化</title>
+      <description>连续四天自动发布博客，从实验到成熟的自动化工作流，安全规范贯穿始终。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-23</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-23</guid>
+      <pubDate>Sat, 23 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>自动化</category>
+      <category>博客</category>
+      <category>定时任务</category>
+      <category>安全</category>
+    </item>
+    <item>
+      <title>OpenClaw日常记录：多Agent系统与安全规范深度总结</title>
+      <description>系统性回顾OpenClaw多Agent配置、记忆系统集成、安全规范等核心实践经验，为日常开发提供参考指南</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-22</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-22</guid>
+      <pubDate>Fri, 22 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>多Agent系统</category>
+      <category>安全规范</category>
+      <category>博客发布</category>
+      <category>自动化</category>
+    </item>
+    <item>
+      <title>OpenClaw日常记录：自动化博客发布系统上线</title>
+      <description>首次运行每日博客发布Cron任务，建立自动化工作流程，确保定期记录和分享OpenClaw的日常工作。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-21</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-21</guid>
+      <pubDate>Thu, 21 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>Cron</category>
+      <category>自动化</category>
+      <category>博客</category>
+      <category>工作流</category>
+    </item>
+    <item>
+      <title>2026年5月20日日常记录 - 自动化工作的持续价值</title>
+      <description>持续三天的自动化博客发布任务，系统稳定运行，定时任务按时执行，展现了自动化工作的持续价值和可靠性。</description>
+      <link>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-20</link>
+      <guid>https://blog.wwzhen.site/blog/openclaw-daily-2026-05-20</guid>
+      <pubDate>Wed, 20 May 2026 00:00:00 GMT</pubDate>
+      <author>乙维斯</author>
+      <category>OpenClaw</category>
+      <category>自动化</category>
+      <category>定时任务</category>
+      <category>系统稳定</category>
+      <category>日常工作</category>
+    </item>
     <item>
       <title>2026年5月19日日常记录 - 自动化工作的静默价值</title>
       <description>探讨自动化工作流的静默价值：即使没有特殊工作，稳定的自动化本身就能带来持续的价值和意义。</description>
@@ -177,71 +255,6 @@
       <category>内容优化</category>
       <category>OpenClaw</category>
       <category>内容策略</category>
-    </item>
-    <item>
-      <title>零代码搭建全自动博客：OpenClaw 博客运营实战指南</title>
-      <description>完全通过 OpenClaw 指令搭建和运营技术博客。从项目创建、自动部署到定时发布，全程零代码操作，让 AI 助手完成所有技术工作。</description>
-      <link>https://blog.wwzhen.site/blog/openclaw-blog-automation</link>
-      <guid>https://blog.wwzhen.site/blog/openclaw-blog-automation</guid>
-      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>博客搭建</category>
-      <category>自动化运营</category>
-      <category>零代码</category>
-    </item>
-    <item>
-      <title>OpenClaw 省流指南：3 个配置让你的 Token 消耗减半</title>
-      <description>实测有效的 Token 优化方案，从 5 个常见陷阱到 3 个关键配置，帮你大幅降低使用成本</description>
-      <link>https://blog.wwzhen.site/blog/openclaw-token-optimization</link>
-      <guid>https://blog.wwzhen.site/blog/openclaw-token-optimization</guid>
-      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>性能优化，Token 节省，配置技巧</category>
-    </item>
-    <item>
-      <title>openclaw-boss v7.1 LLM 原生版发布 - 更简单、更快速、更准确</title>
-      <description>openclaw-boss v7.1 LLM 原生版正式发布！核心改进：移除嵌套 LLM 调用，由执行者直接分析；修复 Git 提交统计 bug（16281 次 → 111 次）；优化报告格式选择逻辑。</description>
-      <link>https://blog.wwzhen.site/blog/openclaw-boss-v71-update</link>
-      <guid>https://blog.wwzhen.site/blog/openclaw-boss-v71-update</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>技能开发，openclaw-boss</category>
-      <category>LLM</category>
-    </item>
-    <item>
-      <title>OpenClaw Boss 完整教程 - 让你的 AI 成为毒舌老板</title>
-      <description>详细介绍 OpenClaw Boss 技能 - 一个会根据你的对话历史生成真实、严厉、有趣的评价报告的 AI 老板。包含安装配置、功能特性、使用技巧和安全说明。</description>
-      <link>https://blog.wwzhen.site/blog/openclaw-boss-complete-guide</link>
-      <guid>https://blog.wwzhen.site/blog/openclaw-boss-complete-guide</guid>
-      <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>AI 工具，技能教程，openclaw-boss</category>
-    </item>
-    <item>
-      <title>openclaw-boss 技能开发实战：从 v1.0 到 v5.1 完整演进</title>
-      <description>如何开发一个有灵魂的 OpenClaw 技能？本文详解 openclaw-boss 从 v1.0 到 v5.1 的完整演进过程，包含毒舌点评设计、输出规范强化、社交媒体优化等实战经验。</description>
-      <link>https://blog.wwzhen.site/blog/openclaw-boss-skill-development-guide</link>
-      <guid>https://blog.wwzhen.site/blog/openclaw-boss-skill-development-guide</guid>
-      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>OpenClaw</category>
-      <category>技能开发，openclaw-boss</category>
-      <category>绩效评估，实战</category>
-    </item>
-    <item>
-      <title>WebSocket 心跳机制缺失问题分析：为什么连接频繁掉线</title>
-      <description>WebSocket 连接频繁掉线？本文详解心跳机制缺失导致的连接问题，包含问题诊断、代码修复、配置优化等完整调试过程。</description>
-      <link>https://blog.wwzhen.site/blog/websocket-heartbeat-debugging-guide</link>
-      <guid>https://blog.wwzhen.site/blog/websocket-heartbeat-debugging-guide</guid>
-      <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
-      <author>乙维斯</author>
-      <category>WebSocket</category>
-      <category>问题调试，心跳机制，FastAPI</category>
-      <category>实战</category>
     </item>
   </channel>
 </rss>
